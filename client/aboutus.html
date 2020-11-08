@@ -1,0 +1,86 @@
+<!DOCTYPE html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>CHEN - LI - NGAU</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/http-vue-loader/src/httpVueLoader.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue-router/dist/vue-router.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <link rel="stylesheet" href="project.css">
+        <link rel="stylesheet" href="aboutus.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+    </head>
+    
+    <body>
+        <header>
+            <div class="back">
+                <div class="outer">
+                    <div class="logo">
+                        <p>Enjoy & experience</p></div>
+                        <nav class="navbar">
+                            <input type="checkbox" id="chk">
+                            <label for="chk" class="menu-btn">
+                                <i class="fas fa-bars"></i>
+                            </label>
+                            <div class="menu">
+                                <router-link class="navigation" to='/'><i class="fas fa-home"></i></router-link>
+                                <router-link class="navigation" to='/trips'>Trips</router-link>
+                                <router-link class="navigation" to='/register'>Register</router-link>
+                                <router-link class="navigation" to='/login'>Login</router-link>
+                                <router-link class="navigation" to='/cart'>Cart</router-link>
+                            </div>
+                        </nav>
+                        <div class="aboutus_txt">
+                            <h1>About us</h1>
+                            <p>Learn more about Enjoy & experience</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </header>
+
+        <main>
+            
+        </main>
+        
+        <footer class="site-footer">
+            <div class="footer">
+                <div class="contacts">
+                    <h2>Contact us</h2>
+                    <div class="bordure"></div>
+                    <ul class="nav_footer" style="float: left;">
+                        <li><a href="https://www.facebook.com/">Facebook<i class="fab fa-facebook-square"></i></a></li>
+                        <li><a href="https://twitter.com/explore">Twitter<i class="fab fa-twitter-square"></i></a></li>
+                    </ul> 
+                </div>
+                
+                <div class="aboutus" >
+                    <h2>Learn more</h2>
+                    <div class="bordure"></div>
+                    <!--Mettre la reference de la page aboutus-->
+                    <a href="aboutus.html">
+                        <button type="button" formnovalidate >About us</button>
+                    </a>
+                </div>
+                
+                <div class="credit" >
+                    <h2>Credits</h2>
+                    <div class="bordure"></div>
+                    <p >Copyright &copy; <script>document.write(new Date().getFullYear());
+                    </script>,</p><p style="font-family: 'Playfair Display', serif; margin-top: -15px;">Enjoy & experience</p>
+                </div>
+                
+                <div class="efrei" >
+                    <h2>EFREI Paris</h2>
+                    <div class="bordure"></div>
+                    <div class="efrei"><a href="https://www.efrei.fr/"><img src="images/efrei.png" alt=""/></a></div>
+                </div>
+
+            </div>
+
+        </footer>
+
+
+    </body>
+</html>

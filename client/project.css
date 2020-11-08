@@ -1,0 +1,415 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arbutus+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aleo:ital@1&display=swap');
+
+body, html{
+    height: 100%;
+    margin: 0;
+}
+
+/*HEADER*/
+.container{
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    animation: animate 15s linear infinite 0s;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    animation-timing-function: ease-in-out;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 100%;
+}
+
+.outer{
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.25);
+
+}
+
+@keyframes animate{
+    0%,100%{
+        background-image: url('images/a.jpg');
+        min-height: 100%;
+    }
+    25%{
+        background-image: url('images/b.jpg');
+        min-height: 100%;
+    }
+    50%{
+        background-image: url('images/c.jpg');
+        min-height: 100%;
+    }
+    75%{
+        background-image: url('images/d.jpg');
+        min-height: 100%;
+    }
+    95%{
+        background-image: url('images/e.jpg');
+        min-height: 100%;
+    }
+
+}
+
+.navbar{    
+    float: right;
+    display: inline-block;
+}
+
+.navigation:hover{
+    border-bottom: 1px solid #89a3ad;
+    color:#c8cdcf;
+    transition: all 0.3s ease 0s;
+}
+
+/*ne marche pas
+.navbar router-link.selected {
+    border-bottom: 1px solid black;
+}
+*/
+
+.navigation{
+    color: white;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease 0s;
+    margin: 0px;
+    font-family: 'Arbutus Slab';
+    cursor: pointer;
+}
+
+.logo{
+    text-align: left;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    margin: 0px;
+    padding-left: 13px;
+    padding-top: 2px;
+    
+    
+}
+
+.logo p{
+    color: #d8e7ed;
+}
+
+
+
+.text-logo h1{
+    font-family: 'Playfair Display', serif;
+    color:#ebede4;
+    font-size:55px;
+    font-weight: 200;
+    width: 100%;
+    text-align: center;
+    padding-top: 7%;
+    vertical-align: middle;  
+}
+
+.text-logo p{
+    font-family: 'Aleo', serif;
+    color:#ebede4;
+    font-size:13px;
+    letter-spacing: 2px;
+    width: 50%;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 250;
+    top: 50%;
+    margin-top: 40px;
+    padding-left: 25%;
+}
+
+.navigation i{
+    font-size: 20px;
+}
+
+/*footer*/
+.footer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding:20px;
+    padding-left: 50px;
+    background-color: #89a3ad;
+    padding-right: 50px;
+}
+
+.bordure{
+    width: 70px;
+    height: 2px;
+    background-color: blanchedalmond;
+    margin-top: -15px;
+   
+}
+
+.contacts h2, .aboutus h2, .credit h2, .efrei h2 {
+    color: blanchedalmond;
+    font-size: 20px;
+    font-family: 'Arbutus Slab';
+    font-weight: 100;
+}
+.nav_footer i{
+    font-size: 30px;
+    color: white;
+    margin-left: 10px;
+}
+
+.nav_footer li i:hover{
+    transition: all 0.3s ease 0s;
+    color: #57729c;
+}
+
+
+.nav_footer li a:hover{
+    transition: all 0.3s ease 0s;
+    color: #57729c;
+}
+
+
+.nav_footer li{
+    list-style: none;
+    font-family: 'Arbutus Slab';
+    margin-left: -38px;
+    padding-bottom: 10px;
+}
+
+.nav_footer a{
+    font-weight: 500;
+    font-size: 15px;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    pointer-events: auto;
+}
+
+.aboutus button{
+    background-color: #64748c;
+    color: white;
+    border-radius: 10px 100px / 120px;
+    border:none;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 18px;
+    font-family: 'Arbutus Slab';
+    transition: all 0.3s ease 0s;
+}
+
+.aboutus button:hover{
+    background-color: #57729c;
+    color: #e1e7f0;
+}
+
+.credit p{
+    font-family: 'Arbutus Slab';
+    color: white;
+}
+
+.efrei img{
+    width: 150px;
+    height: 50px;
+    margin-top: 15px;
+    margin-right: 10px;
+}
+
+.efrei img:hover{
+    background-color: #57729c;
+}
+/***/
+
+
+/*MENU BUTTON*/
+
+.menu-btn{
+    transition: 0.4s;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    display: none;
+    
+}
+
+.menu-btn:hover{
+    color: #89a3ad;
+}
+
+.menu-btn{
+    float: right;
+    top: 10%;
+    margin-right: 50px;
+}
+
+
+#chk{
+    position: absolute;
+    visibility: hidden;
+    z-index: -1111;
+}
+
+@media screen and (max-width: 700px) {
+    .menu-btn{
+        display: block;
+       
+    }
+
+    .menu{
+        position: absolute;
+        width: 100%;
+        height: 60%;
+        right: -100%;
+        top: 80px;
+        background: #333;
+        line-height: normal;
+        transition: 0.7s;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .navigation{
+        display: block;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+        margin: 10px;
+        overflow: hidden;
+    }
+
+    .navigation:hover{
+        color: #89a3ad;
+        border-bottom: hidden;
+    }
+
+    .menu-btn{
+        position: absolute;
+        top: 50px;
+        color: white;
+        right: -20px;
+        
+    }
+
+    #chk:checked ~ .menu{
+        right: 0;
+    }
+}
+
+/**/
+
+/*MAIN*/
+
+.pimg1, .pimg2, .pimg3{
+    position: relative;
+    opacity: 0.7;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+.pimg1{
+    background-image: url('images/route.jpg');
+    min-height: 100%;
+}
+
+.pimg2{
+    background-image: url('images/globe.jpg');
+    min-height: 400px;
+}
+
+.pimg3{
+    background-image: url('images/van.jpg');
+    min-height: 400px;
+}
+
+.section{
+    text-align: center;
+    padding: 50px 60px;
+}
+
+.section-light{
+    background-color: #f4f4f4;
+    color: #666;
+}
+
+.section-dark{
+    background-color: #282e34;
+    color: #dddddd;
+}
+
+.ptext{
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    color: #bdd1d9;
+    font-size: 27px;
+    font-weight: bolder;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    
+}
+
+.ptext .bordertrans{
+    background-color: transparent;
+    color: black;
+}
+
+@media (max-width: 568px) {
+    .pimg1, .pimg2, .pimg3{
+        background-attachment: scroll;
+    }
+}
+
+section p{
+    font-size: 15px;
+    font-family: 'Arbutus Slab';
+}
+
+.reasons{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.r1{
+    padding-right: 250px;
+    margin-top: 10px;
+    width: 20%;
+    padding: 40px;
+}
+
+.r1 i{
+    font-size: 30px;
+}
+
+.dis{
+    color: #666;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease 0s;
+    font-family: 'Arbutus Slab';
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.dis:hover{
+    color:#89a3ad;
+    border-bottom: 1px solid #89a3ad;
+}

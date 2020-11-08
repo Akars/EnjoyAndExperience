@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Aleo:ital@1&display=swap');
+
+.back{
+    background: url(images/avion.jpg) no-repeat;
+    width: 100%;
+    background-size: cover;
+    height: 100vh;
+    opacity: 87%;
+}
+
+.aboutus_txt h1{
+    font-family: 'Playfair Display', serif;
+    color:#ebede4;
+    font-size:55px;
+    font-weight: 200;
+    width: 100%;
+    text-align: center;
+    padding-top: 10%;
+    vertical-align: middle;  
+    
+}
+
+.aboutus_txt p{
+    font-family: 'Aleo', serif;
+    color:#ebede4;
+    font-size:13px;
+    letter-spacing: 2px;
+    width: 50%;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 250;
+    top: 50%;
+    margin-top: 40px;
+    padding-left: 25%;
+
+}
