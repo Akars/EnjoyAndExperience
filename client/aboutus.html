@@ -13,7 +13,7 @@
     
     <body>
         <header>
-            <div class="back">
+            <div class="back" id = "app">
                 <div class="outer">
                     <div class="logo">
                         <p>Enjoy & experience</p></div>
@@ -23,12 +23,11 @@
                                 <i class="fas fa-bars"></i>
                             </label>
                             <div class="menu">
-                                <router-link class="navigation" to='/'><i class="fas fa-home"></i></router-link>
-                                <router-link class="navigation" to='/trips'>Trips</router-link>
-                                <router-link class="navigation" to='/register'>Register</router-link>
-                                <router-link class="navigation" to='/login'>Login</router-link>
-                                <router-link class="navigation" to='/cart'>Cart</router-link>
-                            </div>
+                                <a href = "index.html#/home" class = "navigation">Accueil</a>
+                                <a href = "index.html#/trips" class = "navigation">Trips</a>
+                                <a href = "index.html#/register" class = "navigation">Register</a>
+                                <a href = "index.html#/login" class = "navigation">Login</a>
+                                <a href = "index.html#/panier" class = "navigation">Cart</a>
                         </nav>
                         <div class="aboutus_txt">
                             <h1>About us</h1>
@@ -81,6 +80,6 @@
 
         </footer>
 
-
+         <script src="/vue-application.js"></script>
     </body>
 </html>
