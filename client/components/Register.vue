@@ -1,4 +1,5 @@
 <template>
+
  <div class="col">
         <div class="hide-md-lg">
           <p>Sign in:</p>
@@ -8,6 +9,7 @@
         <input type="password" name="password" placeholder="Password" v-model = "userPassword" required>
         <input type="submit" value="Login" @click="registerUser(userEmail, userPassword)">
         user: {{userEmail}} password: {{userPassword}}
+        <p>hello <br></p>
   </div>
   
 </template>
