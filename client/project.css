@@ -13,7 +13,7 @@ body, html{
     left: 0;
     top: 0;
     width: 100%;
-    height: 100vh;
+    height: 70vh;
     animation: animate 15s linear infinite 0s;
     background-size: cover;
     background-position: center center;
@@ -28,7 +28,7 @@ body, html{
     left: 0;
     top: 0;
     width: 100%;
-    height: 100vh;
+    height: 70vh;
     background: rgba(0, 0, 0, 0.25);
 
 }
@@ -36,23 +36,23 @@ body, html{
 @keyframes animate{
     0%,100%{
         background-image: url('images/a.jpg');
-        min-height: 100%;
+        min-height: 70vh;
     }
     25%{
         background-image: url('images/b.jpg');
-        min-height: 100%;
+        min-height: 70vh;
     }
     50%{
         background-image: url('images/c.jpg');
-        min-height: 100%;
+        min-height: 70vh;
     }
     75%{
         background-image: url('images/d.jpg');
-        min-height: 100%;
+        min-height: 70vh;
     }
     95%{
         background-image: url('images/e.jpg');
-        min-height: 100%;
+        min-height: 70vh;
     }
 
 }
@@ -75,7 +75,7 @@ body, html{
 */
 
 .navigation{
-    color: white;
+    color:#5b7782;
     padding: 8px 20px;
     text-align: center;
     text-decoration: none;
@@ -84,6 +84,7 @@ body, html{
     margin: 0px;
     font-family: 'Arbutus Slab';
     cursor: pointer;
+    margin-bottom: 20px;
 }
 
 .logo{
@@ -98,7 +99,8 @@ body, html{
 }
 
 .logo p{
-    color: #d8e7ed;
+    color: #144f66;
+    font-size:25px;
 }
 
 
@@ -232,7 +234,7 @@ body, html{
 
 .menu-btn{
     transition: 0.4s;
-    color: white;
+    color: red;
     font-size: 25px;
     cursor: pointer;
     display: none;
