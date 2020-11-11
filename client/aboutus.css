@@ -4,7 +4,7 @@
     background: url(images/avion.jpg) no-repeat;
     width: 100%;
     background-size: cover;
-    height: 100vh;
+    height: 80vh;
     opacity: 87%;
 }
 
@@ -34,3 +34,205 @@
     padding-left: 25%;
 
 }
+
+.outer{
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 80vh;
+    background: rgba(0, 0, 0, 0.25);
+
+}
+
+
+
+.navigation{
+    color:#5b7782;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease 0s;
+    margin: 0px;
+    font-family: 'Arbutus Slab';
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+ /*FOOTER*/
+ .footer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding:20px;
+    padding-left: 50px;
+    background-color: #89a3ad;
+    padding-right: 50px;
+}
+
+.bordure{
+    width: 70px;
+    height: 2px;
+    background-color: blanchedalmond;
+    margin-top: -15px;
+  
+}
+
+.contacts h2, .aboutus h2, .credit h2, .efrei h2 {
+    color: blanchedalmond;
+    font-size: 27px;
+    font-family: 'Arbutus Slab';
+    font-weight: 100;
+}
+.nav_footer i{
+    font-size: 40px;
+    color: white;
+    margin-left: 10px;
+}
+
+.nav_footer li i:hover{
+    transition: all 0.3s ease 0s;
+    color: #57729c;
+}
+
+
+.nav_footer li a:hover{
+    transition: all 0.3s ease 0s;
+    color: #57729c;
+}
+
+
+.nav_footer li{
+    list-style: none;
+    font-family: 'Arbutus Slab';
+    margin-left: -38px;
+    padding-bottom: 10px;
+}
+
+.nav_footer a{
+    font-weight: 500;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    pointer-events: auto;
+}
+
+.aboutus button{
+    background-color: #64748c;
+    color: white;
+    border-radius: 10px 100px / 120px;
+    border:none;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 25px;
+    font-family: 'Arbutus Slab';
+    transition: all 0.3s ease 0s;
+}
+
+.aboutus button:hover{
+    background-color: #57729c;
+    color: #e1e7f0;
+}
+
+.credit p{
+    font-family: 'Arbutus Slab';
+    color: white;
+    font-size: 20px;
+}
+
+.efrei img{
+    width: 180px;
+    height: 70px;
+    margin-top: 15px;
+    margin-right: 10px;
+}
+
+.efrei img:hover{
+    background-color: #57729c;
+}
+
+
+/*MENU BUTTON*/
+
+.menu-btn{
+  transition: 0.4s;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+  display: none;
+  
+}
+
+.menu-btn:hover{
+  color: #89a3ad;
+}
+
+.menu-btn{
+  float: right;
+  top: 10%;
+  margin-right: 50px;
+}
+
+
+#chk{
+  position: absolute;
+  visibility: hidden;
+  z-index: -1111;
+}
+
+@media screen and (max-width: 900px) {
+  .menu-btn{
+      display: block;
+  
+  }
+
+  .menu{
+      position: absolute;
+      width: 100%;
+      height: 60%;
+      right: -100%;
+      top: 80px;
+      background: #333;
+      line-height: normal;
+      transition: 0.7s;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
+
+  }
+
+  .navigation{
+      display: block;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
+      padding: 15px;
+      margin: 10px;
+      overflow: hidden;
+  }
+
+  .navigation:hover{
+      color: #89a3ad;
+      border-bottom: hidden;
+  }
+
+  .menu-btn{
+      position: absolute;
+      top: 30px;
+      color: #144f66;
+      right: -20px;
+      
+  }
+
+  #chk:checked ~ .menu{
+      right: 0;
+  }
+}
+
+/**/

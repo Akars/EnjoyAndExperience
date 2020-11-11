@@ -1,5 +1,18 @@
 <template>
   <div>
+      <div class="container">
+                <div class="outer">
+                    <section class="text-logo">
+                        <h1>Welcome to<br>Enjoy & experience</h1>
+                        <p>You are probably here because you would like to travel and to have 
+                            some advices on the best places that exists in the world. Don't worry, 
+                            we, Sophie CHEN, William Li and Aurélia NGAU, are here to help you to find 
+                            the best place that is suitable for you so that you can enjoy your stay to 
+                            the fullest.<br>Discover your next destination.</p>
+                    </section>
+                </div>
+            </div>
+
     <section class="section section-light">
       <h2>Why choosing Enjoy & experience ?</h2>
       <div class="reasons">
@@ -85,6 +98,31 @@ module.exports = {
 
 <style scoped>
 
+/*HEADEER*/
+        .text-logo h1{
+            font-family: 'Playfair Display', serif;
+            color:#ebede4;
+            font-size:65px;
+            font-weight: 200;
+            width: 100%;
+            text-align: center;
+            padding-top: 6%;
+            vertical-align: middle;  
+        }
+
+        .text-logo p{
+            font-family: 'Aleo', serif;
+            color:#ebede4;
+            font-size:17px;
+            letter-spacing: 2px;
+            width: 40%;
+            text-align: center;
+            vertical-align: middle;
+            font-weight: 250;
+            top: 50%;
+            margin-top: 40px;
+            padding-left: 30%;
+        }
 
 
 
