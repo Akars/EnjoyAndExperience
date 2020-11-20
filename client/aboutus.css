@@ -2,6 +2,16 @@
 
 
 
+body, html{
+    height: 100%;
+    margin: 0;
+    width: 100%;
+    position: absolute;
+    top: 0; left: 0;
+    
+}
+
+
 
 .back{
     background: url(images/avion.jpg) no-repeat;
