@@ -36,6 +36,7 @@ var app = new Vue({
       const res = await axios.post('/api/article', article)
       this.articles.push(res.data)
     },
+
     async addToPanier(articleId){
       const quantity = 1
       const id = articleId
@@ -48,16 +49,19 @@ var app = new Vue({
       const res = await axios.post('/api/panier', newArticle)
       this.panier = res.data
     },
+
     async removeFromPanier(articleId){
       const res = await axios.delete('/api/panier/' +  articleId)
       this.panier = res.data
     },
+
     async putToPanier(articleId, quantity){
 
       const res = await axios.put('/api/panier/'+ articleId, {quantity: quantity})
 
       this.panier = res.data
     },
+
     async updateArticle (newArticle) {
       await axios.put('/api/article/' + newArticle.id, newArticle)
       const article = this.articles.find(a => a.id === newArticle.id)
@@ -66,15 +70,19 @@ var app = new Vue({
       article.image = newArticle.image
       article.price = newArticle.price
     },
+
     async deleteArticle (articleId) {
       await axios.delete('/api/article/' + articleId)
       const index = this.articles.findIndex(a => a.id === articleId)
       this.articles.splice(index, 1)
     },
+
     async registerUser(userEmail, userPassword){
       const data = {email: userEmail, password: userPassword}
       await axios.post('/api/register', data)
+      console.log("haloç")
     },
+
     async loginUser(userEmail, userPassword, id){
       const data = {email: userEmail, password: userPassword}
       await axios.post('/api/login', data)
@@ -83,6 +91,7 @@ var app = new Vue({
       id = res.data
       console.log(id)
     },
+
     async getUserId(id){
       console.log("hello")
       const res = await axios.get('/api/me')

@@ -10,7 +10,7 @@ const client = new Client({
  user: 'postgres',
  host: 'localhost',
  password: '0000',
- database: 'TP5'
+ database: 'EnjoyAndExperience'
 })
 
 client.connect()
@@ -27,6 +27,15 @@ class Panier {
 router.post('/register', async(req, res) => {
   const email = req.body.email
   const password = req.body.password
+
+  if(email == null){
+    res.status(400).json({message: 'bad request: the email is null' })
+    return
+  }
+  if(password == null){
+    res.status(400).json({message: 'bad request: the password is null' })
+    return
+  }
 
   const sql = "SELECT email FROM users"
   const result = await client.query({
