@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Aleo:ital@1&display=swap');
 
 
+
+
 .back{
     background: url(images/avion.jpg) no-repeat;
     width: 100%;
@@ -252,7 +254,7 @@ main{
 
 main{
     background-color: burlywood;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Aleo', serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -267,6 +269,10 @@ main{
     grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
     align-items: start;
 
+}
+
+.card-image-sophie{
+    max-width: 100%;
 }
 
 
