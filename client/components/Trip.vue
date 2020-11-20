@@ -55,7 +55,7 @@ module.exports = {
 .test{
   
   margin-top: 5%;
-  background: url(../images/avion.jpg) no-repeat;
+  background: url(images/avion.jpg) no-repeat;
   width: 100%;
   background-size: cover;
   height: 80vh;

@@ -138,17 +138,17 @@ module.exports = {
 
 
 .pimg1{
-    background-image: url('images/route.jpg');
+    background-image: url('../images/route.jpg');
     min-height: 100%;
 }
 
 .pimg2{
-    background-image: url('images/globe.jpg');
+    background-image: url('../images/globe.jpg');
     min-height: 400px;
 }
 
 .pimg3{
-    background-image: url('images/van.jpg');
+    background-image: url('../images/van.jpg');
     min-height: 400px;
 }
 
