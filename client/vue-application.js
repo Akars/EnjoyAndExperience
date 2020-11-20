@@ -2,9 +2,11 @@ const Home = window.httpVueLoader('./components/Home.vue')
 const Panier = window.httpVueLoader('./components/Panier.vue')
 const Register = window.httpVueLoader('./components/Register.vue')
 const Login = window.httpVueLoader('./components/Login.vue')
+const Trip = window.httpVueLoader('./components/Trip.vue')
 
 const routes = [
   { path: '/', component: Home },
+  { path: '/trip', component: Trip},
   { path: '/panier', component: Panier },
   { path: '/register', component: Register},
   { path: '/login', component: Login}
