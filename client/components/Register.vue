@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
 <div class="cool">
   <div class="test">
     <div class="col">
@@ -13,35 +12,18 @@
     <div class="sign">
       <label><b>Password</b></label>
       <input class="textfield" type="password" name="password" placeholder="Enter Password" v-model = "userPassword" required>
-=======
-<div class="test">
-
- <div class="col">
-    <div class="hide-md-lg">
-      <p>Sign in:</p>
-    </div>
-    <div class="sign">
-      <input class="textfield" type="text" name="username" placeholder="Username" v-model = "userEmail" required>
-    </div>
-    <div class="sign">
-      <input class="textfield" type="password" name="password" placeholder="Password" v-model = "userPassword" required>
->>>>>>> 68ddedf4c3ed45f1258829b46a8b7920794758ac
     </div>
     <div class="sign">
       <input class="buttonSignIn" type="submit" value="Login" @click="registerUser(userEmail, userPassword)">
     </div>
-<<<<<<< HEAD
-    <!--<div class="sign">
-    user: {{userEmail}} password: {{userPassword}}
-    </div>-->    
-=======
-    <div class="sign">
-    </div>
->>>>>>> 68ddedf4c3ed45f1258829b46a8b7920794758ac
+          <!--<div class="sign">
+          user: {{userEmail}} password: {{userPassword}}
+          </div>-->  
+          
   </div>
-</div>
-  <div class="tee">
   </div>
+  <div class="tee"></div>
+  
 </div>
 
 </template>
@@ -70,14 +52,7 @@ module.exports = {
 
 <style scoped>
 .test{
-<<<<<<< HEAD
-  background: url(../f.jpg) no-repeat;
-=======
-  
-  margin-top: 5%;
-  background: url(../images/avion.jpg) no-repeat;
-  width: 100%;
->>>>>>> 68ddedf4c3ed45f1258829b46a8b7920794758ac
+  background: url(../images/n.webp) no-repeat;
   background-size: cover;
   margin-top: 9vh;
   width: 100%;
@@ -143,6 +118,7 @@ input:focus{
   font-size: 14px;
   letter-spacing: 1px;
   font-size:18px;
+  color: white;
 }
 
 .buttonSignIn:hover{
@@ -155,5 +131,8 @@ input:focus{
 
 }
 
+::placeholder {
+  color: #dce3e6;
+}
 
 </style>
