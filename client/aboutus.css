@@ -282,7 +282,15 @@ main{
 }
 
 .card-image-sophie{
-    max-width: 100%;
+    width: 350px; 
+    height: 350px; 
+    object-fit: cover; 
+}
+
+.card-image-aurelia{
+    width: 150px; 
+    height: 150px; 
+    object-fit: cover; 
 }
 
 
