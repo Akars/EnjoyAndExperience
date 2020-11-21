@@ -109,15 +109,14 @@ module.exports = {
 .choose h1{
   font-family: 'Playfair Display', serif;
   font-size: 45px;
-  margin-top: 30px;
+  margin-top: 7vh;
   margin-bottom: 20px;
   text-align: center;
 }
 
 .testing{
-  background: url(../images/r.jpg) no-repeat;
   background-size: cover;
-  margin-top: 90px;
+  margin-top: 120px;
   width: 100%;
   height: 20vh;
   border-bottom: 20vh;
@@ -126,7 +125,6 @@ module.exports = {
 
 .wrapper{
   margin: 50px;
-  margin-top: 12vh;
 }
 
 
