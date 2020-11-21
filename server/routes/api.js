@@ -60,7 +60,7 @@ router.post('/register', async(req, res) => {
   })
 
   console.log(result.rows)
-   
+  
   res.json({message: "You are now registered"})
 })
 
@@ -99,6 +99,20 @@ router.post('/login', async(req, res) => {
     res.status(400).json({message: 'bad request: you are already logged' })
       return
   }
+})
+
+router.post('/logout', async(req, res) => {
+  if(req.session.userId === undefined){
+    res.status(400).json({
+      message: 'not logged'
+    })
+    return
+  }
+  else{
+    delete req.session.userId
+  }
+
+  res.json({ message: 'You logout successfully !'})
 })
 
 router.get('/me', async(req, res) => {

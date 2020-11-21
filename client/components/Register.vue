@@ -31,6 +31,7 @@
 <script>
 module.exports = {
   props: {
+    user: {type: Object}
   },
   data () {
     return {

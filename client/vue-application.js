@@ -26,9 +26,11 @@ var app = new Vue({
       updatedAt: null,
       articles: []
     },
+    user: null,
   },
   async mounted () {
     this.getTrips()
+    this.getUser()
   },
   methods: {
     async getTrips(){
@@ -78,21 +80,47 @@ var app = new Vue({
       console.log("haloç")
     },
 
-    async loginUser(userEmail, userPassword, id){
-      const data = {email: userEmail, password: userPassword}
-      await axios.post('/api/login', data)
-      const res = await axios.get('/api/me')
-      console.log(res.data)
-      id = res.data
-      console.log(id)
+    async loginUser(userEmail, userPassword){
+      try{
+        const data = {email: userEmail, password: userPassword}
+        await axios.post('/api/login', data)  
+        await this.getUser()
+        this.$forceUpdate()
+      }
+      catch(e){
+        console.log("Error login")
+      }
     },
 
-    async getUserId(id){
+    async logout(){
+      try{
+        await axios.post('/api/logout')
+        this.user = null
+        console.log("hello")
+        console.log(this.user)
+        this.$forceUpdate()
+      }
+      catch(e){
+        console.log("Error logout")
+      }
+    },
+
+    async getUserId(){
       console.log("hello")
       const res = await axios.get('/api/me')
-      this.id = res.data
-      console.log(this.id)
+      this.user = res.data
+      console.log(this.user)
     },
+
+    async getUser() {
+      try {
+        const res = await axios.get('/api/me')
+        this.user = res.data
+      } catch (e) {
+        this.user = null
+      }
+    },
+
 //////////////////////////////////////////////////////////////
     async addToPanier(articleId){
       const quantity = 1
