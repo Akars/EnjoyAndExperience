@@ -1,27 +1,59 @@
 <template>
-  <div class = "test">
-    <div class="col">
-            <div class="hide-md-lg">
-              <p>Login: </p>
-            </div>
-            <div v-if = "userId === null">
-              <div class="sign">
-                <input type="text" name="username" placeholder="Username" v-model = "userEmail" required>
-              </div>
-              <div class="sign">
-                <input type="password" name="password" placeholder="Password" v-model = "userPassword" required>
-              </div>
-              <div class="sign">
-                <input type="submit" value="Login" @click="loginUser(userEmail, userPassword, userId);">
-              </div>
-              <a href = "index.html#/register" class = "navigation">NOT REGISTERED YET ?</a>
-            </div>
-                
-            <div v-else>
-                <p> You are connected </p>
-            </div>
+  <div >
+    
+    <div class="wrapper">
+      <h1>Trips</h1>
+
+      <div class="trip">
+
+        <div class="lieu">
+          <h3>Bali</h3>
+          <p>Le lorem ipsum est, en imprimerie, une suite de mots sans signification 
+            utilisée à titre provisoire pour calibrer une mise en page, le texte définitif 
+            venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. 
+            Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.</p>
+          <p class="prix">200$</p>
+        </div>
+
+        <div class="lieu">
+          <h3>Bali</h3>
+          <p>Le lorem ipsum est, en imprimerie, une suite de mots sans signification 
+            utilisée à titre provisoire pour calibrer une mise en page, le texte définitif 
+            venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. 
+            Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.</p>
+          <p class="prix">200$</p>
+        </div>
+
+        <div class="lieu">
+          <h3>Bali</h3>
+          <p>Le lorem ipsum est, en imprimerie, une suite de mots sans signification 
+            utilisée à titre provisoire pour calibrer une mise en page, le texte définitif 
+            venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. 
+            Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.</p>
+          <p class="prix">200$</p>
+        </div>
+
+        <div class="lieu">
+          <h3>Bali</h3>
+          <p>Le lorem ipsum est, en imprimerie, une suite de mots sans signification 
+            utilisée à titre provisoire pour calibrer une mise en page, le texte définitif 
+            venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. 
+            Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.</p>
+          <p class="prix">200$</p>
+        </div>
+        <div class="lieu">
+          <h3>Bali</h3>
+          <p>Le lorem ipsum est, en imprimerie, une suite de mots sans signification 
+            utilisée à titre provisoire pour calibrer une mise en page, le texte définitif 
+            venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. 
+            Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.</p>
+          <p class="prix">200$</p>
+        </div>
+
       </div>
+
     </div>
+    
 </template>
 
 <script>
@@ -52,36 +84,36 @@ module.exports = {
 </script>
 
 <style scoped>
-.test{
-  
-  margin-top: 5%;
-  background: url(../images/avion.jpg) no-repeat;
-  width: 100%;
-  background-size: cover;
-  height: 80vh;
-  opacity: 87%;
+
+
+
+.wrapper{
+  margin: 50px;
+  margin-top: 12vh;
 }
 
-.col{
-  
-  
-  text-align: center;
-  
-  
-}
 
-.hide-md-lg{
+.wrapper h1{
   font-family: 'Playfair Display', serif;
-  color:#ebede4;
-  font-size:55px;
-  font-weight: 200;
+  font-size: 45px;
+  margin-bottom: 30px;
   text-align: center;
 }
 
-
-.sign{
-  margin-top: 20px;
+.trip{
+  display: flex;
+  flex-wrap: wrap;
+  width: auto;
+  justify-content: center;
 }
 
+.trip .lieu{
+  background: grey;
+  margin: 20px;
+  width: 400px;
+  padding: 20px;
+  line-height: 20px;
+  position: relative;
+}
 
 </style>
