@@ -17,87 +17,26 @@
           <li>
               <img src="../images/c.jpg" alt=""/>
           </li>
-          <li>
-              <img src="../images/c.jpg" alt=""/>
-          </li>
-          <li>
-              <img src="../images/c.jpg" alt=""/>
-          </li>
       </ul>
     </div>
-    <div class="testing">
-      <div class="choose">
-        <h1>First, choose the continent!</h1>
-      </div>
-      <nav class="navigationTrip">
-          <div class="menuTrip">
-              <button type="button" id="europe_nav" class="menu_trip" formnovalidate onclick="return showEurope();">Europe</button>
-              <button type="button" id="asia_nav" class="menu_trip" formnovalidate onclick="return showAsia();">Asia</button>
-              <button type="button" id="america_nav" class="menu_trip" formnovalidate onclick="return showAmerica();">America</button>
-              <button type="button" id="australia_nav" class="menu_trip" formnovalidate onclick="return showAustralia();">Australia</button>
-              <button type="button" id="africa_nav" class="menu_trip" formnovalidate onclick="return showAfrica();">Africa</button>
-          </div>            
-      </nav>
-    </div>
-
+    
     <div class="wrapper">
       <h1>Trips</h1>
 
       <div class="trip">
-
-        <div class="lieu">
-          <h3>Bali</h3>
-          <p>Le lorem ipsum est, en imprimerie, une suite de mots sans signification 
-            utilisée à titre provisoire pour calibrer une mise en page, le texte définitif 
-            venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. 
-            Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.</p>
-          <button type="button" id="add" class="add-button">Add to cart</button>
-          <p class="prix">200$</p>
+        <div class = "lieu" v-for = "trip in trips" :key="trip.id">
+          <div>
+            <h2> {{trip.title}}</h2>
+            <div class = "trip-img">
+              <div :style="{ backgroundImage: 'url(' + trip.image + ')' }"></div>
+            </div>
+            <p> {{trip.username}} </p>
+            <article>
+              {{trip.description}}
+            </article>
+            <p> {{trip.price}}€/pers</p>
+          <div>
         </div>
-
-        <div class="lieu">
-          <h3>Bali</h3>
-          <p>Le lorem ipsum est, en imprimerie, une suite de mots sans signification 
-            utilisée à titre provisoire pour calibrer une mise en page, le texte définitif 
-            venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. 
-            Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.</p>
-          <button type="button" id="add" class="add-button">Add to cart</button>
-          <p class="prix">200$</p>
-        </div>
-
-        <div class="lieu">
-          <h3>Bali</h3>
-          <img border="0"  src="images/bali.jpg" width="400" height="170">
-          
-          <p>Le lorem ipsum est, en imprimerie, une suite de mots sans signification 
-            utilisée à titre provisoire pour calibrer une mise en page, le texte définitif 
-            venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. 
-            Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.</p>
-          <button type="button" id="add" class="add-button">Add to cart</button>
-          <p class="prix">200$</p>
-        </div>
-
-        <div class="lieu">
-          <h3>Dubai - United Arab Emirates</h3>
-          <p>7days/6night in hotel (4 stars)<br>
-          If you want to relax, Dubai is for you. Hotel located on the 
-          artificial island THe Palm Jumeriah. You will have a private beach of fine sand. 
-          Equipment of the hotel: polynesian style complex room, wifi, store, 
-          laundry services, private pool and beach.</p>
-          <button type="button" id="add" class="add-button">Add to cart</button>
-          <p class="prix">650$ per person</p>
-        </div>
-
-        <div class="lieu">
-          <h3>Bali</h3>
-          <p>Le lorem ipsum est, en imprimerie, une suite de mots sans signification 
-            utilisée à titre provisoire pour calibrer une mise en page, le texte définitif 
-            venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. 
-            Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.</p>
-          <button type="button" id="add" class="add-button">Add to cart</button>
-          <p class="prix">200$</p>
-        </div>
-
       </div>
 
     </div>
@@ -181,13 +120,7 @@ module.exports = {
 }
 
 /*Trips*/
-.testing{
-  background-size: cover;
-  margin-top: 160px;
-  width: 100%;
-  height: 20vh;
-  border-bottom: 20vh;
-}
+
 
 .wrapper{
   margin: 30px;
@@ -207,6 +140,15 @@ module.exports = {
   width: auto;
   justify-content: center;
   
+}
+
+.trip-img{
+  padding: 25px;
+	border-radius: 25px;
+  background: #ffffff;
+  width: 150px;
+	height: 150px;
+	background-size: cover;
 }
 
 .trip .lieu{

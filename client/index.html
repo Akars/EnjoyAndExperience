@@ -221,17 +221,17 @@
           </header>
           <main>
             <router-view
-              :articles="articles"
+              :trips="trips"
               :panier="panier"
-              @add-article="addArticle"
+              @add-trip="addTrip"
               @add-to-panier="addToPanier"
               @put-to-panier="putToPanier"
               @register-user="registerUser"
               @login-user="loginUser"
               @get-user-id="getUserId"
               @remove-from-panier="removeFromPanier"
-              @delete-article="deleteArticle"
-              @update-article="updateArticle"
+              @delete-trip="deleteTrip"
+              @update-trip="updateTrip"
             ></router-view>
           </main>
         </div>
