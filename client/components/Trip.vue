@@ -28,13 +28,13 @@
           <div>
             <h2> {{trip.title}}</h2>
             <div class = "trip-img">
-              <div :style="{ backgroundImage: 'url(' + trip.image + ')' }"></div>
+              <img class = "content-img" :src="trip.image" />
             </div>
-            <p> {{trip.username}} </p>
             <article>
               {{trip.description}}
             </article>
-            <p> {{trip.price}}€/pers</p>
+            <p> {{trip.username}} </p>
+            <p class = "prix"> {{trip.price}}$/pers</p>
           <div>
         </div>
       </div>
@@ -139,16 +139,18 @@ module.exports = {
   flex-wrap: wrap;
   width: auto;
   justify-content: center;
-  
 }
 
 .trip-img{
   padding: 25px;
 	border-radius: 25px;
   background: #ffffff;
-  width: 150px;
-	height: 150px;
-	background-size: cover;
+}
+
+.content-img{
+  width: 100%;
+  height: 300px;
+  border-radius: 2%;
 }
 
 .trip .lieu{
