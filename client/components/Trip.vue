@@ -1,5 +1,24 @@
 <template>
   <div >
+    <div class="slider">
+      <ul id="slider-list">
+          <li>
+              <img src="../images/c.jpg" alt=""/>
+          </li>
+          <li>
+              <img src="../images/c.jpg" alt=""/>
+          </li>
+          <li>
+              <img src="../images/c.jpg" alt=""/>
+          </li>
+          <li>
+              <img src="../images/c.jpg" alt=""/>
+          </li>
+          <li>
+              <img src="../images/c.jpg" alt=""/>
+          </li>
+      </ul>
+    </div>
     <div class="testing">
       <div class="choose">
         <h1>First, choose the continent!</h1>
@@ -14,6 +33,7 @@
           </div>            
       </nav>
     </div>
+
     <div class="wrapper">
       <h1>Trips</h1>
 
@@ -109,14 +129,14 @@ module.exports = {
 .choose h1{
   font-family: 'Playfair Display', serif;
   font-size: 35px;
-  margin-top: 7vh;
   margin-bottom: 20px;
   text-align: center;
+  color: #3f555e;
 }
 
 .testing{
   background-size: cover;
-  margin-top: 120px;
+  margin-top: 160px;
   width: 100%;
   height: 20vh;
   border-bottom: 20vh;
@@ -133,6 +153,7 @@ module.exports = {
   font-size: 35px;
   margin-bottom: 30px;
   text-align: center;
+  color: #3f555e;
 }
 
 .trip{
@@ -149,8 +170,6 @@ module.exports = {
   padding: 20px;
   line-height: 20px;
   position: relative;
-  
-
   box-shadow: 0px 2px 8px 2px #555;
   border-radius: 6px;
 }
@@ -208,6 +227,44 @@ module.exports = {
 .menuTrip button:hover{
     background-color:#9786ad;
     color: white;
+}
+
+/*Slider*/
+.slider{
+  width:250px;
+  height:100px;
+  padding:0;
+  margin: auto;
+  position:relative;
+  margin:30px 60px 100px;
+  margin-top: 90px;
+}
+
+#slider-list{
+  list-style-type:none;
+  display:flex;
+  margin:0;
+  position:absolute;
+  left:0;
+  top:0;
+  padding:0;
+  animation:slide 15s linear infinite;
+}
+
+#slider-list img{
+  width:320px;
+  height:200px;
+  margin-right: 20px;
+}
+
+@keyframes slide{
+  0%{left:0px;}
+  10%{left:0px;}
+  35%{left:-100%;}
+  45%{left:-100%;}
+  75%{left:-200%;}
+  85%{left:-200%;}
+  90%{left:0px;}
 }
 
 
