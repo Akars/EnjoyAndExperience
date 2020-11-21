@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Aleo:ital@1&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    background-color: lavender;
+}
+
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body{
+    background-color: pink;
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    
+}
+
+.grid{
+    display: grid;
+    width: 114em;
+    grid-gap: 6rem;
+    grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
+    align-items:start;
+
+}
+
+/*
+.card-image-aurelia{
+    width: 350px; 
+    height: 350px; 
+    object-fit: cover;
+}*/
+
+
+
+.grid-item {
+    background-color: coral;
+    border-radius: 0.4rem;
+    overflow: hidden;
+    box-shadow: 0 3rem 6rem rgb(0,0,0,0.1);
+    cursor: pointer;
+    transition: 0.2s; 
+}
+
+.grid-item:hover{
+    transform : translateY(-0.5%);
+    box-shadow: 0 4rem 8rem rgb(0, 0, 0, 0.5);
+}
+
+.card-image-aurelia{
+    display: block;
+    width: 100%;
+    height: 35rem;
+    object-fit: cover;
+}
+
+.card-image-william{
+    display: block;
+    width: 100%;
+    height: 35rem;
+    object-fit: cover;
+}
+
+
+.card-image-sophie{
+    display: block;
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+}
+
+
+.card-content{
+    padding: 1rem;
+    font-size: 3rem;
+    
+    
+}
+
+.card-header{
+    font-size : 5rem;
+    font-weight: 500;
+    color: blue;
+    margin-bottom: 2rem;
+}
+
+
+.card-text{
+    font-size: 1.5rem;;
+    font-weight: 1rem;
+    letter-spacing: 0.1rem;
+    line-height: 1.7;
+    color: sienna;
+    margin-bottom: 2.5rem;
+
+}
+
+.card-button{
+    display: block;
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 2rem;
+    text-align: center;
+    color: slategray;
+    background-color: white;
+    border: none;
+    border-radius: 0.4rem;
+    transition: 0.2s;
+    cursor: pointer;
+    letter-spacing: 0.1rem;
+
+}
+
+.card-button span{
+    margin-left: left 1rem;
+    transition: 0.2s;
+}
+
+.card-button :hover,
+.card-button  :active {
+    background-color: lightcoral;
+
+}
+
+.card-button  :hover span,
+.card-button  :active span {
+    margin-left: 1.5rem;
+}
+
+
+
+@media only screen and (max-width:60em){
+    body{
+        padding: 3rem;
+    }
+    .grid{
+        grid-gap: 3rem;
+    }
+}
+
+
