@@ -20,7 +20,7 @@ var app = new Vue({
   router,
   el: '#app',
   data: {
-    articles: [],
+    trips: [],
     panier: {
       createdAt: null,
       updatedAt: null,
@@ -28,17 +28,72 @@ var app = new Vue({
     },
   },
   async mounted () {
-    const res = await axios.get('/api/articles')
-    this.articles = res.data
-    const res2 = await axios.get('/api/panier')
-    this.panier = res2.data
+    this.getTrips()
   },
   methods: {
-    async addArticle (article) {
-      const res = await axios.post('/api/article', article)
-      this.articles.push(res.data)
+    async getTrips(){
+      try{
+        const res = await axios.get('/api/trip')
+        this.trips = res.data
+      }
+      catch(e){
+        console.log("Cannot get trips")
+      }
     },
 
+    async addTrip (trip) {
+      const res = await axios.post('/api/trip', trip) //Sent trip to the api
+      this.trips.push(res.data)
+    },
+
+    async updateTrip (newTrip) {
+      try{
+        await axios.put('/api/trip/' + newTrip.id, newTrip)
+        const trip = this.trips.find(a => a.id === newTrip.id)
+        trip.title = newTrip.title
+        trip.price = newTrip.price
+        trip.image = newTrip.image
+        trip.description = newTrip.description
+        trip.username = newTrip.username
+      }
+      catch(e){
+        console.log("Cannot update the trip")
+      }
+    },
+
+    async deleteTrip (tripId) {
+      try{
+        await axios.delete('/api/trip/' + tripId)
+        const index = this.articles.findIndex(a => a.id === tripId)
+        this.trips.splice(index, 1)
+      }
+      catch(e){
+        console.log("Cannot delete the trip")
+      }
+    },
+//////////////////////////////////////////////////////////////
+    async registerUser(userEmail, userPassword){
+      const data = {email: userEmail, password: userPassword}
+      await axios.post('/api/register', data)
+      console.log("haloç")
+    },
+
+    async loginUser(userEmail, userPassword, id){
+      const data = {email: userEmail, password: userPassword}
+      await axios.post('/api/login', data)
+      const res = await axios.get('/api/me')
+      console.log(res.data)
+      id = res.data
+      console.log(id)
+    },
+
+    async getUserId(id){
+      console.log("hello")
+      const res = await axios.get('/api/me')
+      this.id = res.data
+      console.log(this.id)
+    },
+//////////////////////////////////////////////////////////////
     async addToPanier(articleId){
       const quantity = 1
       const id = articleId
@@ -63,42 +118,5 @@ var app = new Vue({
 
       this.panier = res.data
     },
-
-    async updateArticle (newArticle) {
-      await axios.put('/api/article/' + newArticle.id, newArticle)
-      const article = this.articles.find(a => a.id === newArticle.id)
-      article.name = newArticle.name
-      article.description = newArticle.description
-      article.image = newArticle.image
-      article.price = newArticle.price
-    },
-
-    async deleteArticle (articleId) {
-      await axios.delete('/api/article/' + articleId)
-      const index = this.articles.findIndex(a => a.id === articleId)
-      this.articles.splice(index, 1)
-    },
-
-    async registerUser(userEmail, userPassword){
-      const data = {email: userEmail, password: userPassword}
-      await axios.post('/api/register', data)
-      console.log("haloç")
-    },
-
-    async loginUser(userEmail, userPassword, id){
-      const data = {email: userEmail, password: userPassword}
-      await axios.post('/api/login', data)
-      const res = await axios.get('/api/me')
-      console.log(res.data)
-      id = res.data
-      console.log(id)
-    },
-
-    async getUserId(id){
-      console.log("hello")
-      const res = await axios.get('/api/me')
-      this.id = res.data
-      console.log(this.id)
-    }
   }
 })

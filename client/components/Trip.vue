@@ -107,13 +107,26 @@
 <script>
 module.exports = {
   props: {
-    
+    trips: { type: Array, default: []},
+    panier: { type: Object }
   },
   data () {
     return {
-        userEmail:"",
-        userPassword:"",
-        userId: null,
+        newTrip: {
+          title: "",
+          price: null,
+          image: "",
+          description: "",
+          username: "",
+        },
+        editingTrip: {
+          id: -1,
+          title: "",
+          price: null,
+          image: "",
+          description: "",
+          username: "",
+        }
     }
   },
   async mounted () {
@@ -121,12 +134,39 @@ module.exports = {
 
   },
   methods: {
-      loginUser(email, password, id){
-        this.$emit('login-user', email, password, id);
-      },
-      getUserId(id){
-        this.$emit('get-user-id', id)
+    addTrip(){
+      this.$emit('add-trip', this.newTrip)
+    },
+    addToPanier(tripId){
+      this.$emit('add-to-panier', tripId)
+    },
+    removeFromPanier(articleId){
+    this.$emit('remove-from-panier', articleId)
+   },
+    deleteTrip (tripId) {
+      this.$emit('delete-trip', tripId)
+    },
+    editTrip (trip) {
+      this.editTrip.id = trip.id
+      this.editTrip.title = trip.title
+      this.editTrip.price = trip.price
+      this.editTrip.image = trip.image
+      this.editTrip.description = trip.description
+      this.editTrip.username = trip.username
+    },
+    sendEditTrip () {
+      this.$emit('update-trip', this.editingTrip)
+      this.abortEditTrip()
+    },
+    abortEditTrip () {
+      this.editingTrip = {
+        id: -1,
+        name: '',
+        description: '',
+        image: '',
+        price: 0
       }
+    },
   },
 }
 </script>

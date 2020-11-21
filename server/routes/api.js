@@ -80,7 +80,8 @@ router.post('/login', async(req, res) => {
       console.log(await bcrypt.compare(password, findUser.password))
       if(await bcrypt.compare(password, findUser.password)){
         req.session.userId = findUser.id
-        console.log(req.session.userId, findUser.id)
+        req.session.userEmail = email
+        console.log(req.session.userId, req.session.userEmail)
       }
       else{
         res.status(400).json({message: 'bad request: the password is incorrect' })
@@ -204,7 +205,7 @@ router.post('/panier/pay', (req, res) => {
  * Cette route doit permettre de changer la quantité d'un article dans le panier
  * Le body doit contenir la quantité voulue
  */
-router.put('/panier/:articleId', (req, res) => {
+router.put('/panier/:tripId', (req, res) => {
     const articleId = parseInt(req.params.articleId)
     const quantity = parseInt(req.body.quantity)
 
@@ -234,14 +235,14 @@ router.put('/panier/:articleId', (req, res) => {
 /*
  * Cette route doit supprimer un article dans le panier
  */
-router.delete('/panier/:articleId', (req, res) => {
+router.delete('/panier/:tripId', (req, res) => {
   const articleId = parseInt(req.params.articleId)
 
   if(articleId <= 0 || isNaN(articleId)){
     res.status(400).json({ message: 'bad request' })
     return
   }
-
+  
   var idCorrect = 0
   var index = 0
   for(var article of req.session.panier.articles){
@@ -261,45 +262,64 @@ router.delete('/panier/:articleId', (req, res) => {
 })
 
 
-/**
- * Cette route envoie l'intégralité des articles du site
- */
-router.get('/articles', (req, res) => {
-  res.json(articles)
-})
+/*TRIP*/
 
-/**
- * Cette route crée un article.
- * WARNING: dans un vrai site, elle devrait être authentifiée et valider que l'utilisateur est bien autorisé
- * NOTE: lorsqu'on redémarre le serveur, l'article ajouté disparait
- *   Si on voulait persister l'information, on utiliserait une BDD (mysql, etc.)
- */
-router.post('/article', (req, res) => {
-  const name = req.body.name
-  const description = req.body.description
-  const image = req.body.image
+router.post('/trip', async(req, res) => {
+  const title = req.body.title
   const price = parseInt(req.body.price)
+  const image = req.body.image
+  const description = req.body.description
+  const username = req.session.userEmail
+  
 
-  // vérification de la validité des données d'entrée
-  if (typeof name !== 'string' || name === '' ||
+  if (typeof title !== 'string' || title === '' ||
       typeof description !== 'string' || description === '' ||
       typeof image !== 'string' || image === '' ||
+      typeof username !== 'string' || username === '' ||
       isNaN(price) || price <= 0) {
     res.status(400).json({ message: 'bad request' })
     return
   }
 
-  const article = {
-    id: articles.length + 1,
-    name: name,
-    description: description,
-    image: image,
-    price: price
+  if(req.session.userId !== undefined){
+    const sql = "INSERT INTO trips (title, price, image, description, username) VALUES ($1, $2, $3, $4, $5) RETURNING id"
+    const trips = await client.query({
+      text: sql,
+      values: [title, price, image, description, username]
+    })
+
+    console.log("hello")
+    res.json({message: "You successfully post your trip"})
   }
-  articles.push(article)
-  // on envoie l'article ajouté à l'utilisateur
-  res.json(article)
+  else{
+    res.status(401).json({message: 'bad request: you are not connected'})
+  }
+
 })
+
+router.get('/trip', async (req, res) => {
+  const query = await client.query("SELECT * FROM trips")
+
+  res.json(query.rows)
+})
+
+router.delete('/trip/:tripId', async(req, res) =>{
+  const articleId = parseInt(req.params.articleId)
+
+  if(articleId <= 0 || isNaN(articleId)){
+    res.status(400).json({ message: 'bad request' })
+    return
+  }
+
+  const sql = "DELETE FROM trips WHERE 'id' = " + articleId
+  const trips = await client.query({
+    text: sql,
+  })
+
+  res.json({ message: 'Trip deleted'})
+})
+
+/*//////////////////////////////////////////////////////////////////*/
 
 /**
  * Cette fonction fait en sorte de valider que l'article demandé par l'utilisateur
@@ -330,10 +350,11 @@ function parseArticle (req, res, next) {
   next()
 }
 
-router.route('/article/:articleId')
+
+router.route('/trip/:tripId')
   /**
    * Cette route envoie un article particulier
-   */
+  */
   .get(parseArticle, (req, res) => {
     // req.article existe grâce au middleware parseArticle
     res.json(req.article)
