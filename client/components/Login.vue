@@ -58,7 +58,7 @@ module.exports = {
 .test{
   background: url(../images/r.jpg) no-repeat;
   background-size: cover;
-  margin-top: 9vh;
+  margin-top: 90px;
   width: 100%;
   height: 70vh;
   border-bottom: 20vh;

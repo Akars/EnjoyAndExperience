@@ -1,20 +1,19 @@
 <template>
   <div >
-    <div class="testing"></div>
-    <div class="choose">
-      <h1>First, choose the continent!</h1>
+    <div class="testing">
+      <div class="choose">
+        <h1>First, choose the continent!</h1>
+      </div>
+      <nav class="navigationTrip">
+          <div class="menuTrip">
+              <button type="button" id="europe_nav" class="menu_trip" formnovalidate onclick="return showEurope();">Europe</button>
+              <button type="button" id="asia_nav" class="menu_trip" formnovalidate onclick="return showAsia();">Asia</button>
+              <button type="button" id="america_nav" class="menu_trip" formnovalidate onclick="return showAmerica();">America</button>
+              <button type="button" id="australia_nav" class="menu_trip" formnovalidate onclick="return showAustralia();">Australia</button>
+              <button type="button" id="africa_nav" class="menu_trip" formnovalidate onclick="return showAfrica();">Africa</button>
+          </div>            
+      </nav>
     </div>
-
-    <nav class="navigationTrip">
-        <div class="menuTrip">
-            <button type="button" id="europe_nav" class="menu_trip" formnovalidate onclick="return showEurope();">Europe</button>
-            <button type="button" id="asia_nav" class="menu_trip" formnovalidate onclick="return showAsia();">Asia</button>
-            <button type="button" id="america_nav" class="menu_trip" formnovalidate onclick="return showAmerica();">America</button>
-            <button type="button" id="australia_nav" class="menu_trip" formnovalidate onclick="return showAustralia();">Australia</button>
-            <button type="button" id="africa_nav" class="menu_trip" formnovalidate onclick="return showAfrica();">Africa</button>
-        </div>            
-    </nav>
-    
     <div class="wrapper">
       <h1>Trips</h1>
 
@@ -107,9 +106,21 @@ module.exports = {
 </script>
 
 <style scoped>
+.choose h1{
+  font-family: 'Playfair Display', serif;
+  font-size: 45px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 .testing{
-  padding: 40px;
-  background-color: white;
+  background: url(../images/r.jpg) no-repeat;
+  background-size: cover;
+  margin-top: 90px;
+  width: 100%;
+  height: 20vh;
+  border-bottom: 20vh;
 }
 
 
@@ -199,9 +210,6 @@ module.exports = {
     color: white;
 }
 
-.choose{
-  margin: 20px;
-  text-align: center;
-}
+
 
 </style>
