@@ -26,6 +26,8 @@
 
         <div class="lieu">
           <h3>Bali</h3>
+          <img border="0"  src="images/bali.jpg" width="400" height="170">
+          
           <p>Le lorem ipsum est, en imprimerie, une suite de mots sans signification 
             utilisée à titre provisoire pour calibrer une mise en page, le texte définitif 
             venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. 
@@ -34,12 +36,13 @@
         </div>
 
         <div class="lieu">
-          <h3>Bali</h3>
-          <p>Le lorem ipsum est, en imprimerie, une suite de mots sans signification 
-            utilisée à titre provisoire pour calibrer une mise en page, le texte définitif 
-            venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. 
-            Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.</p>
-          <p class="prix">200$</p>
+          <h3>Dubai - United Arab Emirates</h3>
+          <p>7days/6night in hotel (4 stars)<br>
+          If you want to relax, Dubai is for you. Hotel located on the 
+          artificial island THe Palm Jumeriah. You will have a private beach of fine sand. 
+          Equipment of the hotel: polynesian style complex room, wifi, store, 
+          laundry services, private pool and beach.</p>
+          <p class="prix">650$ per person</p>
         </div>
         <div class="lieu">
           <h3>Bali</h3>
@@ -108,12 +111,22 @@ module.exports = {
 }
 
 .trip .lieu{
-  background: grey;
   margin: 20px;
   width: 400px;
   padding: 20px;
   line-height: 20px;
   position: relative;
+}
+
+.trip .lieu h3{
+
+}
+
+.trip .lieu p{
+  letter-spacing: 1px;
+  font-family: 'Arbutus Slab';
+  color: black;
+  font-size: 13px;
 }
 
 </style>
