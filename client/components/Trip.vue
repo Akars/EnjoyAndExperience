@@ -108,6 +108,7 @@ module.exports = {
   flex-wrap: wrap;
   width: auto;
   justify-content: center;
+  
 }
 
 .trip .lieu{
@@ -116,6 +117,8 @@ module.exports = {
   padding: 20px;
   line-height: 20px;
   position: relative;
+  border-style: solid;
+  border-color:black;
 }
 
 .trip .lieu h3{
@@ -127,6 +130,10 @@ module.exports = {
   font-family: 'Arbutus Slab';
   color: black;
   font-size: 13px;
+}
+
+.trip .lieu .prix{
+  float: right;
 }
 
 </style>
