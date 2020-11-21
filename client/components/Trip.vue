@@ -12,6 +12,7 @@
             utilisée à titre provisoire pour calibrer une mise en page, le texte définitif 
             venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. 
             Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.</p>
+          <button type="button" id="add" class="add-button">Add to cart</button>
           <p class="prix">200$</p>
         </div>
 
@@ -21,6 +22,7 @@
             utilisée à titre provisoire pour calibrer une mise en page, le texte définitif 
             venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. 
             Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.</p>
+          <button type="button" id="add" class="add-button">Add to cart</button>
           <p class="prix">200$</p>
         </div>
 
@@ -32,6 +34,7 @@
             utilisée à titre provisoire pour calibrer une mise en page, le texte définitif 
             venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. 
             Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.</p>
+          <button type="button" id="add" class="add-button">Add to cart</button>
           <p class="prix">200$</p>
         </div>
 
@@ -42,14 +45,17 @@
           artificial island THe Palm Jumeriah. You will have a private beach of fine sand. 
           Equipment of the hotel: polynesian style complex room, wifi, store, 
           laundry services, private pool and beach.</p>
+          <button type="button" id="add" class="add-button">Add to cart</button>
           <p class="prix">650$ per person</p>
         </div>
+
         <div class="lieu">
           <h3>Bali</h3>
           <p>Le lorem ipsum est, en imprimerie, une suite de mots sans signification 
             utilisée à titre provisoire pour calibrer une mise en page, le texte définitif 
             venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. 
             Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.</p>
+          <button type="button" id="add" class="add-button">Add to cart</button>
           <p class="prix">200$</p>
         </div>
 
