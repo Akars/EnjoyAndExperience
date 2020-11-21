@@ -1,5 +1,19 @@
 <template>
   <div >
+    <div class="testing"></div>
+    <div class="choose">
+      <h1>First, choose the continent!</h1>
+    </div>
+
+    <nav class="navigationTrip">
+        <div class="menuTrip">
+            <button type="button" id="europe_nav" class="menu_trip" formnovalidate onclick="return showEurope();">Europe</button>
+            <button type="button" id="asia_nav" class="menu_trip" formnovalidate onclick="return showAsia();">Asia</button>
+            <button type="button" id="america_nav" class="menu_trip" formnovalidate onclick="return showAmerica();">America</button>
+            <button type="button" id="australia_nav" class="menu_trip" formnovalidate onclick="return showAustralia();">Australia</button>
+            <button type="button" id="africa_nav" class="menu_trip" formnovalidate onclick="return showAfrica();">Africa</button>
+        </div>            
+    </nav>
     
     <div class="wrapper">
       <h1>Trips</h1>
@@ -93,7 +107,10 @@ module.exports = {
 </script>
 
 <style scoped>
-
+.testing{
+  padding: 40px;
+  background-color: white;
+}
 
 
 .wrapper{
@@ -127,9 +144,6 @@ module.exports = {
   border-color:black;
 }
 
-.trip .lieu h3{
-
-}
 
 .trip .lieu p{
   letter-spacing: 1px;
@@ -140,6 +154,54 @@ module.exports = {
 
 .trip .lieu .prix{
   float: right;
+}
+
+.add-button{
+  padding: 9px 25px;
+  background-color: #d4f4ff;
+  border:none;
+ 
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  margin-top: 10px;
+  font-family: 'Arbutus Slab'
+}
+
+.add-button:hover{
+  background-color:#8bb0e0;
+  color: white;
+}
+
+.choose{
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+.menuTrip button{
+	  padding: 9px 25px;
+    background-color: rgb(231,212,255);
+    border:none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    margin-top: 10px;
+}
+
+.menuTrip{
+	text-align: center;
+}
+
+.menuTrip button:hover{
+    background-color:#9786ad;
+    color: white;
+}
+
+.choose{
+  margin: 20px;
+  text-align: center;
 }
 
 </style>
