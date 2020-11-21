@@ -108,7 +108,7 @@ module.exports = {
 <style scoped>
 .choose h1{
   font-family: 'Playfair Display', serif;
-  font-size: 45px;
+  font-size: 35px;
   margin-top: 7vh;
   margin-bottom: 20px;
   text-align: center;
@@ -130,7 +130,7 @@ module.exports = {
 
 .wrapper h1{
   font-family: 'Playfair Display', serif;
-  font-size: 45px;
+  font-size: 35px;
   margin-bottom: 30px;
   text-align: center;
 }
@@ -149,8 +149,10 @@ module.exports = {
   padding: 20px;
   line-height: 20px;
   position: relative;
-  border-style: solid;
-  border-color:black;
+  
+
+  box-shadow: 0px 2px 8px 2px #555;
+  border-radius: 6px;
 }
 
 
