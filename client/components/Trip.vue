@@ -17,6 +17,12 @@
           <li>
               <img src="../images/c.jpg" alt=""/>
           </li>
+          <li>
+              <img src="../images/c.jpg" alt=""/>
+          </li>
+          <li>
+              <img src="../images/c.jpg" alt=""/>
+          </li>
       </ul>
     </div>
     <div class="testing">
@@ -134,6 +140,7 @@ module.exports = {
   color: #3f555e;
 }
 
+/*Trips*/
 .testing{
   background-size: cover;
   margin-top: 160px;
@@ -142,11 +149,9 @@ module.exports = {
   border-bottom: 20vh;
 }
 
-
 .wrapper{
-  margin: 50px;
+  margin: 30px;
 }
-
 
 .wrapper h1{
   font-family: 'Playfair Display', serif;
@@ -186,6 +191,12 @@ module.exports = {
   float: right;
 }
 
+
+.trip .lieu h3{
+  font-family: 'Aleo', serif;
+  font-size: 23px;
+}
+
 .add-button{
   padding: 9px 25px;
   background-color: #d4f4ff;
@@ -201,15 +212,10 @@ module.exports = {
   background-color:#8bb0e0;
   color: white;
 }
+/******/
 
-.choose{
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  margin-top: 20px;
-  margin-bottom: 35px;
-  text-align: center;
-}
 
+/*Button nav*/
 .menuTrip button{
 	  padding: 9px 25px;
     background-color: rgb(231,212,255);
@@ -228,6 +234,7 @@ module.exports = {
     background-color:#9786ad;
     color: white;
 }
+/******/
 
 /*Slider*/
 .slider{
@@ -266,7 +273,7 @@ module.exports = {
   85%{left:-200%;}
   90%{left:0px;}
 }
-
+/******/
 
 
 </style>
