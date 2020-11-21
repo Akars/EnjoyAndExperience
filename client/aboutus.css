@@ -301,12 +301,12 @@ main{
 
 /*pour le new about us */
 
-
+/*
 *{
     margin:0;
     padding:0;
     background-color: lavender;
-}
+}*/
 
 html{
     box-sizing: border-box;
@@ -314,8 +314,8 @@ html{
 }
 
 main{
-    background-color: pink;
-    font-family: 'Times New Roman', Times, serif;
+    background-color: silver;
+    font-family: 'Arbutus Slab';
     display: flex;
     justify-content: center;
     align-items: center;
@@ -325,25 +325,17 @@ main{
 
 .grid{
     display: grid;
-    width: 114em;
-    grid-gap: 6rem;
+    width: 120em;
+    grid-gap: 5rem;
     grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
     align-items:start;
 
 }
 
-/*
-.card-image-aurelia{
-    width: 350px; 
-    height: 350px; 
-    object-fit: cover;
-}*/
-
-
 
 .grid-item {
-    background-color: coral;
-    border-radius: 0.4rem;
+    background-color: LightSteelBlue;
+    border-radius: 0.5rem;
     overflow: hidden;
     box-shadow: 0 3rem 6rem rgb(0,0,0,0.1);
     cursor: pointer;
@@ -365,7 +357,7 @@ main{
 .card-image-william{
     display: block;
     width: 100%;
-    height: 35rem;
+    height: 34rem;
     object-fit: cover;
 }
 
@@ -386,19 +378,23 @@ main{
 }
 
 .card-header{
-    font-size : 5rem;
+    font-size : 3rem;
     font-weight: 500;
-    color: blue;
+    color: black;
     margin-bottom: 2rem;
+    margin-left: 8rem;
 }
 
+.function{
+    font-size : 2rem;
+}
 
 .card-text{
     font-size: 1.5rem;;
     font-weight: 1rem;
     letter-spacing: 0.1rem;
     line-height: 1.7;
-    color: sienna;
+    color:black;
     margin-bottom: 2.5rem;
 
 }
