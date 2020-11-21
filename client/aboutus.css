@@ -2,12 +2,9 @@
 
 
 
-body, html{
-    height: 100%;
-    margin: 0;
-    width: 100%;
-    position: absolute;
-    top: 0; left: 0;
+*{
+  margin: 0;
+  padding: 0;
     
 }
 
@@ -288,8 +285,14 @@ main{
 }
 
 .card-image-aurelia{
-    width: 150px; 
-    height: 150px; 
+    width: 350px; 
+    height: 350px; 
+    object-fit: cover; 
+}
+
+.card-image-william{
+    width: 350px; 
+    height: 350px; 
     object-fit: cover; 
 }
 
