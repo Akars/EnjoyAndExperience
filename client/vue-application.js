@@ -44,8 +44,14 @@ var app = new Vue({
     },
 
     async addTrip (trip) {
-      const res = await axios.post('/api/trip', trip) //Sent trip to the api
-      this.trips.push(res.data)
+      try{
+        const res = await axios.post('/api/trip', trip) //Sent trip to the api
+        this.trips.push(res.data)
+        this.$forceUpdate()
+      }
+      catch(e){
+        console.log("Error adding the trip")
+      }
     },
 
     async updateTrip (newTrip) {
@@ -66,7 +72,7 @@ var app = new Vue({
     async deleteTrip (tripId) {
       try{
         await axios.delete('/api/trip/' + tripId)
-        const index = this.articles.findIndex(a => a.id === tripId)
+        const index = this.trips.findIndex(a => a.id === tripId)
         this.trips.splice(index, 1)
       }
       catch(e){

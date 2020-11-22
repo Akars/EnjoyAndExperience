@@ -229,19 +229,19 @@ router.post('/panier/pay', (req, res) => {
  * Le body doit contenir la quantité voulue
  */
 router.put('/panier/:tripId', (req, res) => {
-    const articleId = parseInt(req.params.articleId)
+    const tripId = parseInt(req.params.tripId)
     const quantity = parseInt(req.body.quantity)
 
     console.log("coucou")
-    console.log({articleId, quantity})
-    if(isNaN(quantity) || quantity <= 0 || articleId <= 0 || isNaN(articleId)){
+    console.log({tripId, quantity})
+    if(isNaN(quantity) || quantity <= 0 || tripId <= 0 || isNaN(tripId)){
       res.status(400).json({ message: 'bad request' })
       return
     }
 
     var idCorrect
     for(var article of req.session.panier.articles){
-      if(articleId === article.id){
+      if(tripId === article.id){
         idCorrect = 1
         article.quantity = quantity;
       }
@@ -259,9 +259,9 @@ router.put('/panier/:tripId', (req, res) => {
  * Cette route doit supprimer un article dans le panier
  */
 router.delete('/panier/:tripId', (req, res) => {
-  const articleId = parseInt(req.params.articleId)
+  const tripId = parseInt(req.params.tripId)
 
-  if(articleId <= 0 || isNaN(articleId)){
+  if(tripId <= 0 || isNaN(tripId)){
     res.status(400).json({ message: 'bad request' })
     return
   }
@@ -269,7 +269,7 @@ router.delete('/panier/:tripId', (req, res) => {
   var idCorrect = 0
   var index = 0
   for(var article of req.session.panier.articles){
-    if(articleId === article.id){
+    if(tripId === article.id){
       idCorrect = 1
       req.session.panier.articles.splice(index, 1) 
     }
@@ -306,18 +306,26 @@ router.post('/trip', async(req, res) => {
 
   if(req.session.userId !== undefined){
     const sql = "INSERT INTO trips (title, price, image, description, username) VALUES ($1, $2, $3, $4, $5) RETURNING id"
-    const trips = await client.query({
+    const query = await client.query({
       text: sql,
       values: [title, price, image, description, username]
     })
 
-    console.log("hello")
-    res.json({message: "You successfully post your trip"})
+
+    const trip = {
+      id: query.rows[0].id,
+      title,
+      image,
+      price,
+      description,
+      username,
+    }
+
+    res.json(trip)
   }
   else{
     res.status(401).json({message: 'bad request: you are not connected'})
   }
-
 })
 
 router.get('/trip', async (req, res) => {
@@ -327,86 +335,50 @@ router.get('/trip', async (req, res) => {
 })
 
 router.delete('/trip/:tripId', async(req, res) =>{
-  const articleId = parseInt(req.params.articleId)
+  const tripId = parseInt(req.params.tripId)
 
-  if(articleId <= 0 || isNaN(articleId)){
+  if(tripId <= 0 || isNaN(tripId)){
     res.status(400).json({ message: 'bad request' })
     return
   }
 
-  const sql = "DELETE FROM trips WHERE 'id' = " + articleId
+  const sql = "DELETE FROM trips WHERE id = $1"
   const trips = await client.query({
     text: sql,
+    values: [tripId]
   })
 
   res.json({ message: 'Trip deleted'})
 })
 
+
+router.put('/trip/:tripId', async(req, res) =>{
+  const tripId = parseInt(req.params.tripId)
+  const title = req.body.title
+  const price = parseInt(req.body.price)
+  const image = req.body.image
+  const description = req.body.description
+  const username = req.body.username
+   
+  console.log(username)
+
+  if(tripId <= 0 || isNaN(tripId)){
+    res.status(400).json({ message: 'bad request' })
+    return
+  }
+
+  const sql = "UPDATE trips SET title = $1, price = $2, image = $3, description = $4, username = $5 WHERE id = $6"
+  const result = await client.query({
+    text: sql,
+    values: [title, price, image, description, username, tripId]
+  })
+
+  res.send()
+})
+
 /*//////////////////////////////////////////////////////////////////*/
 
-/**
- * Cette fonction fait en sorte de valider que l'article demandé par l'utilisateur
- * est valide. Elle est appliquée aux routes:
- * - GET /article/:articleId
- * - PUT /article/:articleId
- * - DELETE /article/:articleId
- * Comme ces trois routes ont un comportement similaire, on regroupe leurs fonctionnalités communes dans un middleware
- */
-function parseArticle (req, res, next) {
-  const articleId = parseInt(req.params.articleId)
-
-  // si articleId n'est pas un nombre (NaN = Not A Number), alors on s'arrête
-  if (isNaN(articleId)) {
-    res.status(400).json({ message: 'articleId should be a number' })
-    return
-  }
-  // on affecte req.articleId pour l'exploiter dans toutes les routes qui en ont besoin
-  req.articleId = articleId
-
-  const article = articles.find(a => a.id === req.articleId)
-  if (!article) {
-    res.status(404).json({ message: 'article ' + articleId + ' does not exist' })
-    return
-  }
-  // on affecte req.article pour l'exploiter dans toutes les routes qui en ont besoin
-  req.article = article
-  next()
-}
 
 
-router.route('/trip/:tripId')
-  /**
-   * Cette route envoie un article particulier
-  */
-  .get(parseArticle, (req, res) => {
-    // req.article existe grâce au middleware parseArticle
-    res.json(req.article)
-  })
-
-  /**
-   * Cette route modifie un article.
-   * WARNING: dans un vrai site, elle devrait être authentifiée et valider que l'utilisateur est bien autorisé
-   * NOTE: lorsqu'on redémarre le serveur, la modification de l'article disparait
-   *   Si on voulait persister l'information, on utiliserait une BDD (mysql, etc.)
-   */
-  .put(parseArticle, (req, res) => {
-    const name = req.body.name
-    const description = req.body.description
-    const image = req.body.image
-    const price = parseInt(req.body.price)
-
-    req.article.name = name
-    req.article.description = description
-    req.article.image = image
-    req.article.price = price
-    res.send()
-  })
-
-  .delete(parseArticle, (req, res) => {
-    const index = articles.findIndex(a => a.id === req.articleId)
-
-    articles.splice(index, 1) // remove the article from the array
-    res.send()
-  })
 
 module.exports = router

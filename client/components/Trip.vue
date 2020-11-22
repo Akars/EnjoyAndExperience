@@ -36,7 +36,36 @@
               <p> {{trip.username}} </p>
               <p class = "prix"> {{trip.price}}$/pers</p>
             <div>
-          </div>
+
+            <div class="trip-content" v-if="editingTrip.id !== trip.id">
+              <div class="trip-title">
+                <div>
+                <button @click="editTrip(trip, user.email)">Modifier</button>
+                <button @click="deleteTrip(trip.id)">Delete</button>"
+                </div>
+              </div>
+              <p>{{ trip.description }}</p>
+            </div>
+            <div v-else>
+              <p>
+                <input type="text" v-model="editingTrip.title" />
+                <input type="number" v-model="editingTrip.price" />
+              </p>
+              <p>
+                <input type="text" v-model="editingTrip.image" />,
+                <input type="text " v-model="editingTrip.description" />
+              </p>
+              <div class="button-action">
+                <button class="delete" @click="abortEditTrip()">
+                  Discards
+                </button>
+                <button class="add-basket" @click="sendEditTrip()">
+                  Confirm
+                </button>
+              </div>
+            </div>
+
+          </div>  
         </div>
         <!--
         <div class="trip">
@@ -142,38 +171,31 @@
         -->
       </div>
 
-      <div v-if="user !== null">
-        <p>
-          <input type="text" v-model="editingTrip.title" />
-          <input type="number" v-model="editingTrip.price" />
-        </p>
-        <p>
-          <input type="text" v-model="editingTrip.image" />,
-          <input type="text " v-model="editingTrip.description" />
-        </p>
-        <div class="button-action">
-          <button class="delete" @click="abortEditTrip()">
-            Discards
-          </button>
-          <button class="add-basket" @click="sendEditTrip()">
-            Confirm
-          </button>
-        </div>
-      </div>
+     
     </div>
     <div v-if="user !== null">
-      <p>
-        <input type="text" placeholder ="title" v-model= "newTrip.title" />
-        <input type="number" placeholder="price" v-model= "newTrip.price" />
-      </p>
-      <p>
-        <input type="text" placeholder="url" v-model= "newTrip.image"/>
-        <input type ="text" placeholder="description" v-model= "newTrip.description"/>
-      </p>
-      <div class="button-action">
-          <button class="add-basket" @click="addTrip()">
-            Confirm
-          </button>
+      <div class="container-form">
+      <form id="newPainting" @submit.prevent="addTrip">
+        <h3>Add a new paint<span>i</span>ng</h3>
+        <h4>Please fill this form</h4>
+        <fieldset>
+          <input placeholder="Painting's name" v-model="newTrip.title" type="text" tabindex="1" required autofocus/>
+        </fieldset>
+        <fieldset>
+          <input placeholder="Movement type" v-model="newTrip.description" type="text" tabindex="3" required/>
+        </fieldset>
+        <fieldset>
+          <input placeholder="Painting's link picture" v-model="newTrip.image" type="text" tabindex="5" required/>
+        </fieldset>
+        <fieldset>
+          <input placeholder="Price" v-model="newTrip.price" type="number" tabindex="6" required/>
+        </fieldset>
+        <fieldset>
+          <button type="submit">Add the painting</button>
+        </fieldset>
+      </form>
+      <!-- End of the add painting form  -->
+    </div>
     </div>
 
 </template>
@@ -221,13 +243,15 @@ module.exports = {
     deleteTrip (tripId) {
       this.$emit('delete-trip', tripId)
     },
-    editTrip (trip) {
-      this.editTrip.id = trip.id
-      this.editTrip.title = trip.title
-      this.editTrip.price = trip.price
-      this.editTrip.image = trip.image
-      this.editTrip.description = trip.description
-      this.editTrip.username = trip.username
+    editTrip (trip, username) {
+      console.log(username)
+      this.editingTrip.id = trip.id
+      this.editingTrip.title = trip.title
+      this.editingTrip.price = trip.price
+      this.editingTrip.image = trip.image
+      this.editingTrip.description = trip.description
+      this.editingTrip.username = username
+      console.log(this.editingTrip.username)
     },
     sendEditTrip () {
       this.$emit('update-trip', this.editingTrip)
