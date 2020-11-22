@@ -119,6 +119,7 @@ input{
   border: 1px solid white;
   margin-bottom: 30px;
   font-size:18px;
+  color: white;
 }
 
 input:focus{
