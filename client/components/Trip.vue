@@ -71,7 +71,7 @@
         </div>
 
         <div class = "lieu">
-            <h3>Bangkok - Thailand</h3>
+            <h3>Sri-Lanka</h3>
             <img border ="0"  src="images/bali.jpg" width="400" height="170">
             <p>aurelia.ngau@gmail.com </p>
             <article>
@@ -121,7 +121,7 @@
 
         <div class = "lieu">
             <h3>Dalmatian Coast - Croatia</h3>
-            <img border ="0"  src="images/bali.jpg" width="400" height="170">
+            <img border ="0"  src="images/bali.jpg" width="400" height=" 170">
             <p>aurelia.ngau@gmail.com </p>
             <article>
             5days/4 nights in a hotel<br>
@@ -225,6 +225,7 @@ module.exports = {
 
 .wrapper{
   margin: 30px;
+  margin-top: 25vh;
 }
 
 .wrapper h1{
@@ -297,7 +298,9 @@ module.exports = {
   color: white;
 }
 /******/
-
+article{
+  margin-bottom: 20px ;
+}
 
 /*Button nav*/
 .menuTrip button{
