@@ -18,7 +18,10 @@
           <input class="buttonSignIn" type="submit" value="Login" @click="registerUser(userEmail, userPassword)">
         </div>
       </div>
-      <div v-else> {{ goToLogin() }}</div>
+      <div v-else>
+        <h1>Welcome! {{user.email}}</h1>
+        <button class = "logout" @click="logout()">Logout</button>
+      </div>
           
     </div>
   </div>
