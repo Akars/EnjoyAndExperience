@@ -176,23 +176,25 @@
     <div v-if="user !== null">
       <div class="container-form">
       <form id="newPainting" @submit.prevent="addTrip">
-        <h3>Add a new paint<span>i</span>ng</h3>
-        <h4>Please fill this form</h4>
+        <div class="textfield">
+          <h3>Add a new trips<br> Please fill this form</h3>
+          
         <fieldset>
-          <input placeholder="Painting's name" v-model="newTrip.title" type="text" tabindex="1" required autofocus/>
+          <input placeholder="Trip's place" v-model="newTrip.title" type="text" tabindex="1" required autofocus/>
         </fieldset>
         <fieldset>
-          <input placeholder="Movement type" v-model="newTrip.description" type="text" tabindex="3" required/>
+          <input placeholder="Description" v-model="newTrip.description" type="text" tabindex="3" required/>
         </fieldset>
         <fieldset>
-          <input placeholder="Painting's link picture" v-model="newTrip.image" type="text" tabindex="5" required/>
+          <input placeholder="Trip's link picture" v-model="newTrip.image" type="text" tabindex="5" required/>
         </fieldset>
         <fieldset>
           <input placeholder="Price" v-model="newTrip.price" type="number" tabindex="6" required/>
         </fieldset>
         <fieldset>
-          <button type="submit">Add the painting</button>
+          <button class="buttonaddnew" type="subm">Add the painting</button>
         </fieldset>
+        </div>
       </form>
       <!-- End of the add painting form  -->
     </div>
@@ -285,6 +287,7 @@ module.exports = {
 .wrapper{
   margin: 30px;
   margin-top: 25vh;
+  margin-bottom: 50px;
 }
 
 .wrapper h1{
@@ -301,6 +304,7 @@ module.exports = {
   flex-wrap: wrap;
   width: auto;
   justify-content: center;
+  margin-bottom: 50px;
 }
 
 .trip-img{
@@ -343,18 +347,18 @@ module.exports = {
   font-size: 23px;
 }
 
-.add-button{
+button{
   padding: 9px 25px;
   background-color: #d4f4ff;
   border:none;
- 
+  border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease 0s;
   margin-top: 10px;
   font-family: 'Arbutus Slab'
 }
 
-.add-button:hover{
+button:hover{
   background-color:#8bb0e0;
   color: white;
 }
@@ -423,5 +427,48 @@ article{
 }
 /******/
 
+input{
+  display: inline-block;
+  border: none;
+  border-bottom:#00BFFF 1px solid;
+  margin-bottom: 20px;
+  padding-top: 2px;
+  padding-bottom:4px;
+  padding-left:4px;
+  margin-left: 20px;
+  margin-top: 7px;
+  font-family: 'Arbutus Slab';
+  width:400px;
+
+}
+
+fieldset{
+  padding:7px;
+  border: none;
+}
+
+.textfield{
+  border: 1px solid black;
+  box-sizing: border-box;
+  box-shadow:0px 2px 8px 2px #555;
+  border-radius: 6px;
+  margin: auto;
+  width: 600px;;
+}
+
+.textfield h4, .textfield h3{
+  text-align: center;
+  font-size: 30px;
+  color: #3f555e;
+  font-family: 'Arbutus Slab';
+
+}
+
+.buttonaddnew{
+  float: right;
+  font-family: 'Arbutus Slab';
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
 
 </style>

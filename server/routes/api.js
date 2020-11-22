@@ -9,7 +9,7 @@ const { find } = require('../data/articles.js')
 const client = new Client({
  user: 'postgres',
  host: 'localhost',
- password: '0000',
+ password: 'postgresql',
  database: 'EnjoyAndExperience'
 })
 
