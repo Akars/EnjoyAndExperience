@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="trip">
     <h2>Mon Panier</h2>
-    <div>
+    <div >
       <article class="lieu" v-for="trip in panier.trips" :key="trip.id">
         <div class="trip-img">
-          <div
+          <div class="content-img"
             :style="{
               backgroundImage:
                 'url(' + trips.find((a) => a.id === trip.id).image + ')',
@@ -81,17 +81,40 @@ module.exports = {
 
 <style scoped>
 .trip-img {
-  display: center;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 5%;
+  padding: 0;
+	border-radius: 25px;
+  background: #ffffff;
+  width: 100%;
 }
+
 .trip-img div {
   width: 120px;
   height: 120px;
   background-size: cover;
 }
 
+.lieu{
+  margin: 20px;
+  width: 400px;
+  padding: 20px;
+  line-height: 20px;
+  position: relative;
+  box-shadow: 0px 2px 8px 2px #555;
+  border-radius: 6px;
+}
+.trip{
+  display: flex;
+  flex-wrap: wrap;
+  width: auto;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.content-img{
+  width: 100%;
+  height: 300px;
+  border-radius: 2%;
+}
 
 input {
     display: inline-block;
