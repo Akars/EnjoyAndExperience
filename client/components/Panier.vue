@@ -1,9 +1,9 @@
 <template>
 
   <div class="trip">
-    
+    <div class ="title">
       <h2>My shopping cart</h2>
-    
+    </div>
     
     <div class="des">
       <article class="lieu" v-for="trip in panier.trips" :key="trip.id">
@@ -35,12 +35,13 @@
           <p class = "price">Total: {{ trips.find(a => a.id === trip.id).price * trip.quantity}}€</p>
         </div>
       </article>
-      <p> Total cost: {{ totalItem }}</p>
+
         
     </div>
 
-        <div id="validityButton">
-          <button @click ="pay()">Check in</button>      
+        <div id="check-in" class="total">
+          <p class = "totalcost"> Total cost: {{ totalItem }}</p>
+          <button class ="valideButton" @click ="pay()">Check in</button>      
         </div>
 
 
@@ -111,6 +112,15 @@ module.exports = {
 </script>
 
 <style scoped>
+
+
+.title{
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5px;
+}
+
+
 .setfooter{
   width:100%;
   padding: 35px;
@@ -122,6 +132,7 @@ module.exports = {
 .des{
   display: flex;
   flex-wrap: wrap;
+  margin-top: 100px;
   width: auto;
   justify-content: center;
 }
@@ -202,21 +213,31 @@ p{
   font-family: 'Arbutus Slab';
 }
 
- #validityButton button{
+
+.totalcost{
+  display: flex;
+
+}
+
+.valideButton{
+  display: flex;
   text-align: center;
-  margin-top: 100px;
-  
+  margin-left: 10px;
+  font-size: 20px;
+  transition: all 0.3s eaase 0s;
+  background-color: #b4ede1;
 }
 
-#validityButton button{
-    font-size: 20px;
-    background-color: #b4ede1;
-    transition: all 0.3s eaase 0s;
-     float: right;
-
+#check-in{
+  display: flex;
+  position: absolute;
+  flex-direction: row;
+  box-sizing: border-box;
+  margin-top: 6em;
+  font-size: 3ex;
 }
 
-#validityButton button:hover{
+#check-in button:hover{
   background-color: #357c8c;
   color: white;
 }

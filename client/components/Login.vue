@@ -7,7 +7,7 @@
             </div>
             <div v-if = "user === null">
               <div class="sign">
-                <input type="text" name="username" placeholder="Username" v-model = "userEmail" required>
+                <input type="email" id = "email" name="username" placeholder="email" v-model = "userEmail" required>
               </div>
               <div class="sign">
                 <input type="password" name="password" placeholder="Password" v-model = "userPassword" required>

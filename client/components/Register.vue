@@ -8,7 +8,7 @@
         </div>
         <div class="sign" >
           <label><b>Username</b></label>
-          <input class="textfield" type="text" name="username" placeholder="Enter Username" v-model = "userEmail" required>
+          <input class="textfield" type="email" id = "email" name="email" placeholder="Enter email" v-model = "userEmail" required>
         </div>
         <div class="sign">
           <label><b>Password</b></label>

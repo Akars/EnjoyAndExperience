@@ -26,11 +26,11 @@ router.post('/register', async(req, res) => {
   const email = req.body.email
   const password = req.body.password
 
-  if(email == null){
+  if(email === null){
     res.status(400).json({message: 'bad request: the email is null' })
     return
   }
-  if(password == null){
+  if(password === null){
     res.status(400).json({message: 'bad request: the password is null' })
     return
   }
