@@ -53,6 +53,9 @@ module.exports = {
       goToLogin(){
         window.location.href = "index.html#/login"
       },
+      logout(){
+        this.$emit('logout');
+      }
   },
 }
 </script>
