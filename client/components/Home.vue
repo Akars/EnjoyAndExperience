@@ -58,13 +58,14 @@
           </span>
       </div>
     </div>
-
+<!--
     <section class="section section-light">
         <h2>Come discover your stay !</h2>
         <router-link class="dis" to='/trips'>Trips</router-link>
         <router-link class="dis" to='/register'>Register</router-link>
         <router-link class="dis" to='/login'>Login</router-link>
     </section>
+-->
   </div>
 </template>
 
@@ -72,7 +73,8 @@
 module.exports = {
   props: {
     articles: { type: Array, default: [] },
-    panier: { type: Object }
+    panier: { type: Object },
+    user: {type: Object},
   },
   data () {
     return {

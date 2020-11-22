@@ -31,7 +31,9 @@
 module.exports = {
   props: {
     articles: { type: Array, default: [] },
-    panier: { type: Object }
+    panier: { type: Object },
+    user: {type: Number},
+    isNotConnected: {type: Boolean},
   },
   data () {
     return {

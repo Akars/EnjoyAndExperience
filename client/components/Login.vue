@@ -5,7 +5,7 @@
             <div class="hide-md-lg">
               <h2>Login: </h2>
             </div>
-            <div v-if = "userId === null">
+            <div v-if = "user === null">
               <div class="sign">
                 <input type="text" name="username" placeholder="Username" v-model = "userEmail" required>
               </div>
@@ -13,14 +13,14 @@
                 <input type="password" name="password" placeholder="Password" v-model = "userPassword" required>
               </div>
               <div class="sign">
-                <input class="buttonSignIn" type="submit" value="Login" @click="loginUser(userEmail, userPassword, userId);">
+                <input class="buttonSignIn" type="submit" value="Login" @click="loginUser(userEmail, userPassword);">
               </div>
               <a href = "index.html#/register" class = "navigation">NOT REGISTERED YET ?</a>
             </div>
-             <!--
             <div v-else>
-                <p> You are connected </p>
-            </div>-->
+                <h1>Welcome back! {{user.email}}</h1>
+                <button class = "logout" @click="logout()">Logout</button>
+            </div>
       </div>
     </div>
    <div class="tee"></div>
@@ -30,13 +30,12 @@
 <script>
 module.exports = {
   props: {
-    
+    user: {type: Object},
   },
   data () {
     return {
         userEmail:"",
         userPassword:"",
-        userId: null,
     }
   },
   async mounted () {
@@ -44,12 +43,18 @@ module.exports = {
 
   },
   methods: {
-      loginUser(email, password, id){
-        this.$emit('login-user', email, password, id);
+      loginUser(email, password){
+        this.$emit('login-user', email, password);
       },
-      getUserId(id){
-        this.$emit('get-user-id', id)
-      }
+      getUserId(){
+        this.$emit('get-user-id')
+      },
+      goToHome(){
+        window.location.href = "index.html#/"
+      },
+      logout(){
+        this.$emit('logout');
+      },
   },
 }
 </script>
