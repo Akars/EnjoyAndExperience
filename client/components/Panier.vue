@@ -1,6 +1,9 @@
 <template>
   <div class="trip">
-    <h2>My shopping cart</h2>
+    <div class="titre">
+      <h2>My shopping cart</h2>
+    </div>
+    
     <div class="des">
       <article class="lieu" v-for="trip in panier.trips" :key="trip.id">
         <div class="trip-img">
