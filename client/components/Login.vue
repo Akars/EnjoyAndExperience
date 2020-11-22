@@ -40,6 +40,8 @@ module.exports = {
     }
   },
   async mounted () {
+      
+
   },
   methods: {
     loginUser(email, password){
@@ -77,8 +79,7 @@ module.exports = {
   margin: auto;
   background-color:rgb(0, 0, 0, 0.1);
   color: white;
-  margin-top: 3rem;
-  padding: 0px;
+  padding: 20px;
   box-shadow: 0px 2px 8px 2px #555;
   border-radius: 6px;
   box-sizing: border-box;

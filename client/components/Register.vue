@@ -4,7 +4,7 @@
     <div class="col">
       <div v-if = "user === null">
         <div class="hide-md-lg">
-          <h2>SIGN IN:</h2>
+          <h2>SIGN UP:</h2>
         </div>
         <div class="sign" >
           <label><b>Username</b></label>
@@ -76,7 +76,7 @@ module.exports = {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 26%;
+  width: 60%;
   margin: auto;
   background-color:rgb(0, 0, 0, 0.1);
   color: white;
@@ -86,8 +86,9 @@ module.exports = {
   box-sizing: border-box;
 }
 
-
-
+.col h1{
+    font-size: 1.5rem;
+  }
 
 .col h2{
   text-align: center;
@@ -106,9 +107,6 @@ module.exports = {
   letter-spacing: 2px;
 }
 
-.col{
-  padding: 40px;;
-}
 
 input{
   width: 100%;
@@ -165,8 +163,6 @@ input:focus{
 ::placeholder {
   color: #dce3e6;
 }
-
-
 
 
 
