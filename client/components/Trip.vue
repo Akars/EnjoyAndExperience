@@ -72,7 +72,7 @@
           <input placeholder="Price" v-model="newTrip.price" type="number" tabindex="6" required/>
         </fieldset>
         <fieldset>
-          <button class="buttonaddnew" type="subm">Add the painting</button>
+          <button class="buttonaddnew" type="subm">Add the package</button>
         </fieldset>
         </div>
       </form>
