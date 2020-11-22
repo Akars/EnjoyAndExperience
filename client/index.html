@@ -223,6 +223,7 @@
             <router-view
               :trips="trips"
               :panier="panier"
+              :user="user"
               @add-trip="addTrip"
               @add-to-panier="addToPanier"
               @put-to-panier="putToPanier"
@@ -232,6 +233,7 @@
               @remove-from-panier="removeFromPanier"
               @delete-trip="deleteTrip"
               @update-trip="updateTrip"
+              @logout="logout"
             ></router-view>
           </main>
         </div>

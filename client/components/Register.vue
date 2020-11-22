@@ -2,25 +2,25 @@
 <div class="cool">
   <div class="test">
     <div class="col">
-      <div class="hide-md-lg">
-      <h2>SIGN IN:</h2>
-    </div>
-    <div class="sign">
-      <label><b>Username</b></label>
-      <input class="textfield" type="text" name="username" placeholder="Enter Username" v-model = "userEmail" required>
-    </div>
-    <div class="sign">
-      <label><b>Password</b></label>
-      <input class="textfield" type="password" name="password" placeholder="Enter Password" v-model = "userPassword" required>
-    </div>
-    <div class="sign">
-      <input class="buttonSignIn" type="submit" value="Login" @click="registerUser(userEmail, userPassword)">
-    </div>
-          <!--<div class="sign">
-          user: {{userEmail}} password: {{userPassword}}
-          </div>-->  
+      <div v-if = "user === null">
+        <div class="hide-md-lg">
+          <h2>SIGN IN:</h2>
+        </div>
+        <div class="sign" >
+          <label><b>Username</b></label>
+          <input class="textfield" type="text" name="username" placeholder="Enter Username" v-model = "userEmail" required>
+        </div>
+        <div class="sign">
+          <label><b>Password</b></label>
+          <input class="textfield" type="password" name="password" placeholder="Enter Password" v-model = "userPassword" required>
+        </div>
+        <div class="sign">
+          <input class="buttonSignIn" type="submit" value="Login" @click="registerUser(userEmail, userPassword)">
+        </div>
+      </div>
+      <div v-else> {{ goToLogin() }}</div>
           
-  </div>
+    </div>
   </div>
   <div class="tee"></div>
   
@@ -31,6 +31,7 @@
 <script>
 module.exports = {
   props: {
+    user: {type: Object}
   },
   data () {
     return {
@@ -45,6 +46,9 @@ module.exports = {
   methods: {
       registerUser(email, password){
         this.$emit('register-user', email, password);
+      },
+      goToLogin(){
+        window.location.href = "index.html#/login"
       },
   },
 }

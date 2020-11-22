@@ -28,13 +28,13 @@
           <div>
             <h3> {{trip.title}}</h3>
             <div class = "trip-img">
-              <div :style="{ backgroundImage: 'url(' + trip.image + ')' }"></div>
+              <img class = "content-img" :src="trip.image" />
             </div>
-            <p> {{trip.username}} </p>
             <article>
               {{trip.description}}
             </article>
-            <p> {{trip.price}}€/pers</p>
+            <p> {{trip.username}} </p>
+            <p class = "prix"> {{trip.price}}$/pers</p>
           <div>
         </div>-->
       <div class="trip">
@@ -140,6 +140,24 @@
 
       </div>
 
+      <div v-if="user !== null">
+        <p>
+          <input type="text" v-model="editingTrip.title" /> |
+          <input type="number" v-model="editingTrip.price" />
+        </p>
+        <p>
+          <input type="text" v-model="editingTrip.image" />,
+          <input type="text " v-model="editingTrip.description" />
+        </p>
+        <div class="button-action">
+          <button class="delete" @click="abortEditTrip()">
+            Discards
+          </button>
+          <button class="add-basket" @click="sendEditTrip()">
+            Confirm
+          </button>
+        </div>
+      </div>
     </div>
     
 </template>
@@ -148,7 +166,8 @@
 module.exports = {
   props: {
     trips: { type: Array, default: []},
-    panier: { type: Object }
+    panier: { type: Object },
+    user: {type: Object},
   },
   data () {
     return {
@@ -242,16 +261,18 @@ module.exports = {
   flex-wrap: wrap;
   width: auto;
   justify-content: center;
-  
 }
 
 .trip-img{
   padding: 25px;
 	border-radius: 25px;
   background: #ffffff;
-  width: 150px;
-	height: 150px;
-	background-size: cover;
+}
+
+.content-img{
+  width: 100%;
+  height: 300px;
+  border-radius: 2%;
 }
 
 .trip .lieu{

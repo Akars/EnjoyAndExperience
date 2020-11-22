@@ -59,8 +59,6 @@ router.post('/register', async(req, res) => {
     values: [email, hash]
   })
 
-  console.log(result.rows)
-   
   res.json({message: "You are now registered"})
 })
 
@@ -69,7 +67,6 @@ router.post('/login', async(req, res) => {
   const password = req.body.password
 
   if(req.session.userId === undefined){
-    console.log(req.session.userId)
     const sql = "SELECT email, password, id FROM users"
     const result = await client.query({
       text: sql,
@@ -77,11 +74,9 @@ router.post('/login', async(req, res) => {
 
     var findUser = result.rows.find(a => a.email === email) 
     if(findUser !== undefined){
-      console.log(await bcrypt.compare(password, findUser.password))
       if(await bcrypt.compare(password, findUser.password)){
         req.session.userId = findUser.id
         req.session.userEmail = email
-        console.log(req.session.userId, req.session.userEmail)
       }
       else{
         res.status(400).json({message: 'bad request: the password is incorrect' })
@@ -101,9 +96,37 @@ router.post('/login', async(req, res) => {
   }
 })
 
+router.post('/logout', async(req, res) => {
+  if(req.session.userId === undefined){
+    res.status(400).json({
+      message: 'not logged'
+    })
+    return
+  }
+  else{
+    delete req.session.userId
+  }
+
+  res.json({ message: 'You logout successfully !'})
+})
+
 router.get('/me', async(req, res) => {
   if(req.session.userId !== undefined){
-    res.json(req.session.userId)
+    const query = await client.query({
+      text: "SELECT * FROM users WHERE id = $1 LIMIT 1",
+      values: [req.session.userId]
+    })
+  
+    if (query.rows === undefined) {
+      res.status(400).json({ message: 'user inexistent' })
+      return
+    }
+  
+    const user = query.rows[0]
+    res.json({
+      id: user.id,
+      email: user.email
+    })
   }
   else{
     res.status(401).json({message: 'bad request: you are not connected'})

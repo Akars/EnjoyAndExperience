@@ -86,7 +86,7 @@
     width: 70px;
     height: 2px;
     background-color: blanchedalmond;
-    margin-top: -15px;
+    margin-top: 8px;
   
 }
 
@@ -99,7 +99,7 @@
 .nav_footer i{
     font-size: 40px;
     color: white;
-    margin-left: 10px;
+    margin-left: 20px;
 }
 
 .nav_footer li i:hover{
@@ -129,6 +129,7 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     pointer-events: auto;
+    margin-left: 20;
 }
 
 .aboutus button{
@@ -152,6 +153,7 @@
     font-family: 'Arbutus Slab';
     color: white;
     font-size: 20px;
+    line-height: 2.5;
 }
 
 .efrei img{
@@ -247,7 +249,7 @@
 
 
 /*CSS for the main*/
-
+/*
 main{
     margin : 0;
     padding : 0; 
@@ -295,7 +297,154 @@ main{
     height: 350px; 
     object-fit: cover; 
 }
+*/
 
 
 
-/**/
+/*pour le new about us */
+
+/*
+*{
+    margin:0;
+    padding:0;
+    background-color: lavender;
+}*/
+
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+main{
+    background-color: white;
+    font-family: 'Arbutus Slab';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    
+}
+
+.grid{
+    display: grid;
+    width: 120em;
+    grid-gap: 5rem;
+    grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
+    align-items:start;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+
+}
+
+
+.grid-item {
+    background-color: LightSteelBlue;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 3rem 6rem rgb(0,0,0,0.1);
+    cursor: pointer;
+    transition: 0.2s; 
+}
+
+.grid-item:hover{
+    transform : translateY(-0.5%);
+    box-shadow: 0 4rem 8rem rgb(0, 0, 0, 0.5);
+}
+
+.card-image-aurelia{
+    display: block;
+    width: 100%;
+    height: 35rem;
+    object-fit: cover;
+}
+
+.card-image-william{
+    display: block;
+    width: 100%;
+    height: 34rem;
+    object-fit: cover;
+}
+
+
+.card-image-sophie{
+    display: block;
+    width: 100%;
+    height: 35rem;
+    object-fit: cover;
+}
+
+
+.card-content{
+    padding: 1rem;
+    font-size: 3rem;
+    
+    
+}
+
+.card-header{
+    font-size : 3rem;
+    font-weight: 500;
+    color: black;
+    margin-bottom: 2rem;
+    margin-left: 8rem;
+}
+
+.function{
+    font-size : 1.8rem;
+    margin-left: 1rem;
+}
+
+.card-text{
+    font-size: 1.5rem;;
+    font-weight: 1rem;
+    letter-spacing: 0.1rem;
+    line-height: 1.7;
+    color:black;
+    margin-bottom: 2.5rem;
+
+}
+
+.card-button{
+    display: block;
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 2rem;
+    text-align: center;
+    color: slategray;
+    background-color: lavender;
+    border: none;
+    border-radius: 0.4rem;
+    transition: 0.2s;
+    cursor: pointer;
+    letter-spacing: 0.1rem;
+
+}
+
+.card-button span{
+    margin-left: left 1rem;
+    transition: 0.2s;
+}
+
+.card-button :hover,
+.card-button  :active {
+    background-color: lightcoral;
+
+}
+
+.card-button  :hover span,
+.card-button  :active span {
+    margin-left: 1.5rem;
+}
+
+
+
+@media only screen and (max-width:60em){
+    body{
+        padding: 3rem;
+    }
+    .grid{
+        grid-gap: 3rem;
+    }
+}
+
+
