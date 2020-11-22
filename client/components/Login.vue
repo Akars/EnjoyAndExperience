@@ -5,7 +5,7 @@
             <div class="hide-md-lg">
               <h2>Login: </h2>
             </div>
-            <div v-if = "user === null">
+            <div v-if = "userId === null">
               <div class="sign">
                 <input type="text" name="username" placeholder="Username" v-model = "userEmail" required>
               </div>
@@ -13,14 +13,14 @@
                 <input type="password" name="password" placeholder="Password" v-model = "userPassword" required>
               </div>
               <div class="sign">
-                <input class="buttonSignIn" type="submit" value="Login" @click="loginUser(userEmail, userPassword);">
+                <input class="buttonSignIn" type="submit" value="Login" @click="loginUser(userEmail, userPassword, userId);">
               </div>
               <a href = "index.html#/register" class = "navigation">NOT REGISTERED YET ?</a>
             </div>
+             <!--
             <div v-else>
-                <h1>Welcome back! {{user.email}}</h1>
-                <button class = "logout" @click="logout()">Logout</button>
-            </div>
+                <p> You are connected </p>
+            </div>-->
       </div>
     </div>
    <div class="tee"></div>
@@ -30,12 +30,13 @@
 <script>
 module.exports = {
   props: {
-    user: {type: Object},
+    
   },
   data () {
     return {
         userEmail:"",
         userPassword:"",
+        userId: null,
     }
   },
   async mounted () {
@@ -43,17 +44,11 @@ module.exports = {
 
   },
   methods: {
-      loginUser(email, password){
-        this.$emit('login-user', email, password);
+      loginUser(email, password, id){
+        this.$emit('login-user', email, password, id);
       },
-      getUserId(){
-        this.$emit('get-user-id')
-      },
-      goToHome(){
-        window.location.href = "index.html#/"
-      },
-      logout(){
-        this.$emit('logout');
+      getUserId(id){
+        this.$emit('get-user-id', id)
       }
   },
 }
@@ -74,7 +69,7 @@ module.exports = {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  
+  width: 26%;
   margin: auto;
   background-color:rgb(0, 0, 0, 0.1);
   color: white;
@@ -82,7 +77,7 @@ module.exports = {
   box-shadow: 0px 2px 8px 2px #555;
   border-radius: 6px;
   box-sizing: border-box;
- 
+  
 }
 
 .col h2{
