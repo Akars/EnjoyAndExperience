@@ -1,7 +1,7 @@
 <template>
   <div class="trip">
-    <h2>Mon Panier</h2>
-    <div >
+    <h2>My shopping cart</h2>
+    <div class="des">
       <article class="lieu" v-for="trip in panier.trips" :key="trip.id">
         <div class="trip-img">
           <div class="content-img"
@@ -32,10 +32,11 @@
         </div>
 
       </article>
-        <div id="validityButton">
+        
+    </div>
+    <div id="validityButton">
           <button @click ="pay()">Check in</button>
         </div>
-    </div>
   </div>
 </template>
 
@@ -80,6 +81,13 @@ module.exports = {
 </script>
 
 <style scoped>
+.des{
+  display: flex;
+  flex-wrap: wrap;
+  width: auto;
+  justify-content: center;
+}
+
 .trip-img {
   padding: 0;
 	border-radius: 25px;
@@ -88,13 +96,14 @@ module.exports = {
 }
 
 .trip-img div {
-  width: 120px;
-  height: 120px;
+  width: 100%;
+  height: 200px;
   background-size: cover;
 }
 
 .lieu{
   margin: 20px;
+  margin-top:30px;
   width: 400px;
   padding: 20px;
   line-height: 20px;
@@ -105,9 +114,10 @@ module.exports = {
 .trip{
   display: flex;
   flex-wrap: wrap;
-  width: auto;
+  width: 100%;
   justify-content: center;
   margin-bottom: 50px;
+  margin-top:30px;
 }
 
 .content-img{
@@ -153,6 +163,31 @@ p{
 
 #validityButton{
   padding-left: 25%
+ 
 }
+
+#validityButton button{
+    font-size: 20px;
+    background-color: #b4ede1;
+    transition: all 0.3s eaase 0s;
+     float: right;
+
+}
+
+#validityButton button:hover{
+  background-color: #357c8c;
+  color: white;
+}
+
+.trip h2{
+  font-family: 'Playfair Display', serif;
+  font-size: 35px;
+  margin-top: 50px;
+  margin-bottom:50px;
+  text-align:center;
+  color: #3f555e;
+}
+
+
 
 </style>
