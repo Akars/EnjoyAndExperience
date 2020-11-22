@@ -19,11 +19,11 @@ class Panier {
   constructor () {
     this.createdAt = new Date()
     this.updatedAt = new Date()
-    this.articles = []
+    this.trips = []
   }
 }
 
-
+/*********************LOGIN *************************/
 router.post('/register', async(req, res) => {
   const email = req.body.email
   const password = req.body.password
@@ -132,18 +132,8 @@ router.get('/me', async(req, res) => {
     res.status(401).json({message: 'bad request: you are not connected'})
   }
 })
-/**
- * Dans ce fichier, vous trouverez des exemples de requêtes GET, POST, PUT et DELETE
- * Ces requêtes concernent l'ajout ou la suppression d'articles sur le site
- * Votre objectif est, en apprenant des exemples de ce fichier, de créer l'API pour le panier de l'utilisateur
- *
- * Notre site ne contient pas d'authentification, ce qui n'est pas DU TOUT recommandé.
- * De même, les informations sont réinitialisées à chaque redémarrage du serveur, car nous n'avons pas de système de base de données pour faire persister les données
- */
+/***************************************************************** */
 
-/**
- * Notre mécanisme de sauvegarde des paniers des utilisateurs sera de simplement leur attribuer un panier grâce à req.session, sans authentification particulière
- */
 router.use((req, res, next) => {
   // l'utilisateur n'est pas reconnu, lui attribuer un panier dans req.session
   if (typeof req.session.panier === 'undefined') {
