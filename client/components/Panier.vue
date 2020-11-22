@@ -11,7 +11,7 @@
             }"
           ></div>
         </div>
-        <div>
+        
           <h1 class = "Title">{{ trips.find(a => a.id === trip.id).title }}: {{trips.find(a => a.id === trip.id).price}}€</h1>
           <p class = "descriptionProduct">{{ trips.find(a => a.id === trip.id).description }}</p>
         

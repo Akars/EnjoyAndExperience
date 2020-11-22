@@ -33,7 +33,7 @@
               <article>
                 {{trip.description}}
               </article>
-              <p> {{trip.username}} </p>
+              <p> Author: {{trip.username}} </p>
               <p class = "prix"> {{trip.price}}$/pers</p>
               <button v-if = "isBooked(trip.id) !== true" @click="addToPanier(trip.id)">Booking</button>
               <button v-else @click="removeFromPanier(trip.id)">Cancel</button>
@@ -43,10 +43,9 @@
                 <div class="trip-title">
                   <div>
                   <button @click="editTrip(trip, user.email)">Modifier</button>
-                  <button @click="deleteTrip(trip.id)">Delete</button>"
+                  <button @click="deleteTrip(trip.id)">Delete</button>
                   </div>
                 </div>
-                <p>{{ trip.description }}</p>
               </div>
               <div v-if="editingTrip.id === trip.id">
                 <p>
