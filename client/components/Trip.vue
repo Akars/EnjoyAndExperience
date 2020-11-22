@@ -23,21 +23,23 @@
     <div class="wrapper">
       <h1>Trips</h1>
 
-      
-        <!--<div class = "lieu" v-for = "trip in trips" :key="trip.id">
-          <div>
-            <h3> {{trip.title}}</h3>
-            <div class = "trip-img">
-              <img class = "content-img" :src="trip.image" />
-            </div>
-            <article>
-              {{trip.description}}
-            </article>
-            <p> {{trip.username}} </p>
-            <p class = "prix"> {{trip.price}}$/pers</p>
-          <div>
-        </div>-->
-      <div class="trip">
+        <div class ="trip">
+          <div class = "lieu" v-for = "trip in trips" :key="trip.id">
+            <div>
+              <h3> {{trip.title}}</h3>
+              <div class = "trip-img">
+                <img class = "content-img" :src="trip.image" />
+              </div>
+              <article>
+                {{trip.description}}
+              </article>
+              <p> {{trip.username}} </p>
+              <p class = "prix"> {{trip.price}}$/pers</p>
+            <div>
+          </div>
+        </div>
+        <!--
+        <div class="trip">
         <div class = "lieu">
             <h3>Djerba - Tunisie</h3>
             <img border ="0"  src="images/bali.jpg" width="400" height="170">
@@ -137,12 +139,12 @@
             <button type="button" id="add" class="add-button">Add to cart</button>
             <p class="prix">200€/pers</p>
         </div>
-
+        -->
       </div>
 
       <div v-if="user !== null">
         <p>
-          <input type="text" v-model="editingTrip.title" /> |
+          <input type="text" v-model="editingTrip.title" />
           <input type="number" v-model="editingTrip.price" />
         </p>
         <p>
@@ -159,7 +161,20 @@
         </div>
       </div>
     </div>
-
+    <div v-if="user !== null">
+      <p>
+        <input type="text" placeholder ="title" v-model= "newTrip.title" />
+        <input type="number" placeholder="price" v-model= "newTrip.price" />
+      </p>
+      <p>
+        <input type="text" placeholder="url" v-model= "newTrip.image"/>
+        <input type ="text" placeholder="description" v-model= "newTrip.description"/>
+      </p>
+      <div class="button-action">
+          <button class="add-basket" @click="addTrip()">
+            Confirm
+          </button>
+    </div>
 
 </template>
 

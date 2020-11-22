@@ -82,10 +82,7 @@ module.exports = {
   box-shadow: 0px 2px 8px 2px #555;
   border-radius: 6px;
   box-sizing: border-box;
-<<<<<<< HEAD
  
-=======
->>>>>>> f138c04c0f795cb660216f0591f32fc3d310e185
 }
 
 .col h2{
