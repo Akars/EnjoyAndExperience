@@ -1,8 +1,9 @@
 <template>
+
   <div class="trip">
-    <div class="titre">
+    
       <h2>My shopping cart</h2>
-    </div>
+    
     
     <div class="des">
       <article class="lieu" v-for="trip in panier.trips" :key="trip.id">
@@ -37,10 +38,18 @@
       <p> Total cost: {{ totalItem }}</p>
         
     </div>
-    <div id="validityButton">
-          <button @click ="pay()">Check in</button>
+
+        <div id="validityButton">
+          <button @click ="pay()">Check in</button>      
         </div>
+
+
+     <div class = "setfooter">
+        
+    </div>
+
   </div>
+  
 </template>
 
 <script>
@@ -102,6 +111,14 @@ module.exports = {
 </script>
 
 <style scoped>
+.setfooter{
+  width:100%;
+  padding: 35px;
+  margin-top: 180px;
+  background-color: white;
+}
+
+
 .des{
   display: flex;
   flex-wrap: wrap;
@@ -147,6 +164,9 @@ module.exports = {
   border-radius: 2%;
 }
 
+
+
+
 input {
     display: inline-block;
     border: none;
@@ -182,9 +202,10 @@ p{
   font-family: 'Arbutus Slab';
 }
 
-#validityButton{
-  padding-left: 25%
- 
+ #validityButton button{
+  text-align: center;
+  margin-top: 100px;
+  
 }
 
 #validityButton button{
@@ -204,9 +225,11 @@ p{
   font-family: 'Playfair Display', serif;
   font-size: 35px;
   margin-top: 50px;
-  margin-bottom:50px;
+  margin-bottom:10px;
   text-align:center;
   color: #3f555e;
+  text-align: center;
+
 }
 
 
