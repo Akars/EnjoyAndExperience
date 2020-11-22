@@ -19,7 +19,8 @@
         </div>
       </div>
       <div v-else>
-        <h1>Welcome! {{user.email}}</h1>
+                <h1>Welcome! {{user.email}}</h1>
+             
         <button class = "logout" @click="logout()">Logout</button>
       </div>
           
@@ -85,6 +86,9 @@ module.exports = {
   box-sizing: border-box;
 }
 
+
+
+
 .col h2{
   text-align: center;
   letter-spacing: 1px;
@@ -135,6 +139,23 @@ input:focus{
   background: rgba(0,0,0,0.5);
 }
 
+
+.logout{
+  width: 100%;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-size:18px;
+  color: white;
+  background-color: transparent;
+}
+
+
+.logout:hover{
+  background: rgba(0,0,0,0.5);
+}
+
 .tee{
   background-color: white;
   height: 10vh;
@@ -144,5 +165,9 @@ input:focus{
 ::placeholder {
   color: #dce3e6;
 }
+
+
+
+
 
 </style>
