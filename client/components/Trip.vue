@@ -64,7 +64,7 @@
         </fieldset>
         <fieldset>
           <label for="Description">Description of the trip : </label>
-          <textarea  placeholder="Description" cols="30" rows="10" v-model="newTrip.description"  type="text" tabindex="3" required/> </textarea>
+          <textarea  placeholder="Description" cols="30" rows="10" v-model="newTrip.description"  type="text" tabindex="3" required> </textarea>
           
         </fieldset>
         <fieldset>
