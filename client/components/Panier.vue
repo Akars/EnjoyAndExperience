@@ -2,7 +2,7 @@
   <div>
     <h2>Mon Panier</h2>
     <div>
-      <article v-for="trip in panier.trips" :key="trip.id">
+      <article class="lieu" v-for="trip in panier.trips" :key="trip.id">
         <div class="trip-img">
           <div
             :style="{
