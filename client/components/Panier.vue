@@ -33,8 +33,8 @@
           </div>  
           <p class = "price">Total: {{ trips.find(a => a.id === trip.id).price * trip.quantity}}€</p>
         </div>
-
       </article>
+      <p> Total cost: {{ totalItem }}</p>
         
     </div>
     <div id="validityButton">
@@ -55,11 +55,29 @@ module.exports = {
       editingCart:{
         id: -1,
         quantity: 0,
-      }
+      },
     }
   },
   async mounted () {
 
+  },
+
+  computed: {
+
+    totalPanier() {
+      return this.panier.trips.map((trip) => ({
+        ...trip,
+        ...this.trips.find((a) => a.id === trip.id),
+      }));
+    },
+    totalItem: function(){
+      let sum = 0;
+      this.totalPanier.forEach(function(trip) {
+         sum += (parseInt(trip.price) * parseInt(trip.quantity));
+      });
+
+     return sum;
+   }
   },
   methods: {
     pay(){
