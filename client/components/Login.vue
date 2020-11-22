@@ -18,7 +18,7 @@
               <a href = "index.html#/register" class = "navigation">NOT REGISTERED YET ?</a>
             </div>
             <div v-else>
-              <h1>Welcome back! {{user.email}}</h1>
+              <h1>You are connected <br> Welcome back ! {{user.email}}</h1>
                 <button class = "logout" @click="logout()">Logout</button>
             </div>
       </div>
@@ -75,7 +75,7 @@ module.exports = {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 26%;
+  width: 60%;
   margin: auto;
   background-color:rgb(0, 0, 0, 0.1);
   color: white;
@@ -86,6 +86,12 @@ module.exports = {
   
 }
 
+
+.col h1{
+    font-size: 1.5rem;
+  }
+
+
 .col h2{
   text-align: center;
   letter-spacing: 1px;
@@ -95,10 +101,11 @@ module.exports = {
   margin-bottom: 50px;
 }
 
+/*
 .col{
   margin-top: 3rem;
   padding: 0px;
-}
+}*/
 
 input{
   width: 100%;
@@ -128,6 +135,28 @@ input:focus{
 .buttonSignIn:hover{
   background: rgba(0,0,0,0.5);
 }
+
+
+.logout{
+  width: 100%;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-size:18px;
+  color: white;
+  background-color: transparent;
+}
+
+.logout:hover{
+  background: rgba(0,0,0,0.5);
+}
+
+
+
+
+
+
 
 .tee{
   background-color: white;
