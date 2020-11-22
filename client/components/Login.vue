@@ -90,7 +90,8 @@ module.exports = {
 }
 
 .col{
-  padding: 40px;;
+  margin-top: 3rem;
+  padding: 0px;
 }
 
 input{
@@ -136,5 +137,10 @@ input:focus{
   color: #eaf2cb;
   transition: all 0.3s ease 0s;
 }
+
+
+
+
+
 
 </style>
