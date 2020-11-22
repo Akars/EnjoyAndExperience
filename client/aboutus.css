@@ -86,7 +86,7 @@
     width: 70px;
     height: 2px;
     background-color: blanchedalmond;
-    margin-top: -15px;
+    margin-top: 8px;
   
 }
 
@@ -99,7 +99,7 @@
 .nav_footer i{
     font-size: 40px;
     color: white;
-    margin-left: 10px;
+    margin-left: 20px;
 }
 
 .nav_footer li i:hover{
@@ -129,6 +129,7 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     pointer-events: auto;
+    margin-left: 20;
 }
 
 .aboutus button{
@@ -152,6 +153,7 @@
     font-family: 'Arbutus Slab';
     color: white;
     font-size: 20px;
+    line-height: 2.5;
 }
 
 .efrei img{
@@ -386,7 +388,8 @@ main{
 }
 
 .function{
-    font-size : 2rem;
+    font-size : 1.8rem;
+    margin-left: 1rem;
 }
 
 .card-text{
@@ -406,7 +409,7 @@ main{
     font-size: 2rem;
     text-align: center;
     color: slategray;
-    background-color: white;
+    background-color: lavender;
     border: none;
     border-radius: 0.4rem;
     transition: 0.2s;
