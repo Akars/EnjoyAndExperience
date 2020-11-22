@@ -63,7 +63,9 @@
           <input placeholder="Trip's place" v-model="newTrip.title" type="text" tabindex="1" required autofocus/>
         </fieldset>
         <fieldset>
-          <input placeholder="Description" v-model="newTrip.description" type="text" tabindex="3" required/>
+          <label for="Description">Description of the trip : </label>
+          <textarea  placeholder="Description" cols="30" rows="10" v-model="newTrip.description"  type="text" tabindex="3" required/></textarea>
+          
         </fieldset>
         <fieldset>
           <input placeholder="Trip's link picture" v-model="newTrip.image" type="text" tabindex="5" required/>
@@ -164,6 +166,8 @@ module.exports = {
 }
 
 /*Trips*/
+
+
 
 
 .wrapper{
@@ -324,6 +328,38 @@ input{
 
 }
 
+
+label,
+textarea {
+  display: inline-block;
+  border: none;
+  border-bottom:#00BFFF 1px solid;
+  margin-bottom: 20px;
+  padding-top: 2px;
+  padding-bottom:4px;
+  padding-left:4px;
+  margin-left: 20px;
+  margin-top: 7px;
+  font-family: 'Arbutus Slab';
+  width:400px;
+  
+}
+textarea {
+    padding: 10px;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #00BFFF;
+    box-shadow: 1px 1px 1px #999;
+}
+
+label {
+  color: #3f555e;
+  font-family: 'Arbutus Slab';
+    display: block;
+    margin-bottom: 10px;
+    
+}
+
 fieldset{
   padding:7px;
   border: none;
@@ -352,5 +388,8 @@ fieldset{
   margin-bottom: 10px;
   margin-right: 10px;
 }
+
+
+
 
 </style>
