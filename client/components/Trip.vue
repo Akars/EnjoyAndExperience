@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div>
     <div class="slider">
       <ul id="slider-list">
           <li>
@@ -23,10 +23,10 @@
     <div class="wrapper">
       <h1>Trips</h1>
 
-      <div class="trip">
-        <div class = "lieu" v-for = "trip in trips" :key="trip.id">
+      
+        <!--<div class = "lieu" v-for = "trip in trips" :key="trip.id">
           <div>
-            <h2> {{trip.title}}</h2>
+            <h3> {{trip.title}}</h3>
             <div class = "trip-img">
               <div :style="{ backgroundImage: 'url(' + trip.image + ')' }"></div>
             </div>
@@ -36,7 +36,108 @@
             </article>
             <p> {{trip.price}}€/pers</p>
           <div>
+        </div>-->
+      <div class="trip">
+        <div class = "lieu">
+            <h3>Djerba - Tunisie</h3>
+            <img border ="0"  src="images/bali.jpg" width="400" height="170">
+            <p>aurelia.ngau@gmail.com </p>
+            <article>
+              Djerba promises you a stay synonymous with softness, change of scenery 
+              and tranquility. Houmt Souk, the administrative capital of the island 
+              will charm you with its picturesque.
+              his renovated 4-star hotel, located in a quiet environment, is separated 
+              from the sandy beach by a pleasant promenade. The hotel has 300 rooms 
+              spread over 2 buildings of 2 floors with 2 elevators.
+            </article>
+            <button type="button" id="add" class="add-button">Add to cart</button>
+            <p class="prix">130€/pers</p>
         </div>
+
+        <div class = "lieu">
+            <h3>Bangkok - Thailand</h3>
+            <img border ="0"  src="images/bali.jpg" width="400" height="170">
+            <p>aurelia.ngau@gmail.com </p>
+            <article>
+             10days/9nights in hotel (3 stars)<br>
+            Depart from France<br>
+            You will discover the beautiful capital of Thailand, Bangkok. 
+            Through this circuit, you will see the historic sites of Ayutthaya and Sukhothai, 
+            classified as UNESCO World Heritage Sites, the floating market, have a visit in a 
+            farm with an elephant and many other activities...
+            </article>
+            <button type="button" id="add" class="add-button">Add to cart</button>
+            <p class="prix">800€/pers</p> 
+        </div>
+
+        <div class = "lieu">
+            <h3>Bangkok - Thailand</h3>
+            <img border ="0"  src="images/bali.jpg" width="400" height="170">
+            <p>aurelia.ngau@gmail.com </p>
+            <article>
+             8 days/ 5 nights in hotel<br>
+             Sri Lanka invites you to let yourself be carried away by the richness of its biodiversity. 
+             A relaxing atmosphere in the middle of nature reserves, tropical forests, bird songs and 
+             the sound of rivers. The Sri Lankan population, very welcoming, will make you discover its 
+             traditions, its culinary specialties, its unique and authentic places...
+             During your stay, benefit from the half-board formula: breakfast and dinner buffet at the 
+             restaurant.
+            </article>
+            <button type="button" id="add" class="add-button">Add to cart</button>
+            <p class="prix">700€/pers</p> 
+        </div>
+
+        <div class = "lieu">
+            <h3>Algarve - Portugal</h3>
+            <img border ="0"  src="images/bali.jpg" width="400" height="170">
+            <p>aurelia.ngau@gmail.com </p>
+            <article>
+            8days/ 7 nights in hotel (3 stars)<br>
+            Portugal's southernmost region, the Algarve will delight travelers in search of beautiful 
+            beaches and idyllic temperatures.
+            It is only 10 minutes walk from the old town of Albufeira, full of history, and many shops, 
+            bars and restaurants and 2 minutes from the beach !<br>
+            Activities: swimming pool, solarium, petanque, golf, tennis courts, archery...
+            </article>
+            <button type="button" id="add" class="add-button">Add to cart</button>
+            <p class="prix">170€/pers</p>
+        </div>
+
+        <div class = "lieu">
+            <h3>Creete - Greece</h3>
+            <img border ="0"  src="images/bali.jpg" width="400" height="170">
+            <p>aurelia.ngau@gmail.com </p>
+            <article>
+            4days/ 3nights in hotel<br>
+            Crete has an undeniable cultural heritage. This magical island brings together history 
+            and traditions, culture and nature, the pleasures of physical exercise and the spirit, 
+            the joys of eating and sharing.
+            Many discoveries and excursions guided by our local island employees.<br>
+            Advantages of the hotel : Beautiful swimming pool area, ideal location, refined decoration
+            </article>
+            <button type="button" id="add" class="add-button">Add to cart</button>
+            <p class="prix">220€/pers</p>
+        </div>
+
+        <div class = "lieu">
+            <h3>Dalmatian Coast - Croatia</h3>
+            <img border ="0"  src="images/bali.jpg" width="400" height="170">
+            <p>aurelia.ngau@gmail.com </p>
+            <article>
+            5days/4 nights in a hotel<br>
+            To stay on the Dalmatian Coast is to discover a concentrate of the most beautiful 
+            sites from Croatia to Bosnia-Herzegovina. You will be amazed by the historical and natural 
+            treasures that you will find along the Adriatic Sea. The Dalmatian Coast will answer all your 
+            desires of culture, authenticity, relaxation, idleness, nature and sport!<br>
+            The hotel offers you :<br>
+            - Outdoor swimming pool.<br>
+            - Pebble beach in front of the hotel. Deckchairs and parasols available for a fee.<br>
+            - Fitness room in the spa.<br>
+            </article>
+            <button type="button" id="add" class="add-button">Add to cart</button>
+            <p class="prix">200€/pers</p>
+        </div>
+
       </div>
 
     </div>
@@ -133,6 +234,7 @@ module.exports = {
   text-align: center;
   color: #3f555e;
 }
+
 
 .trip{
   display: flex;

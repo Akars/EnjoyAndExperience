@@ -69,7 +69,7 @@ module.exports = {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 26%;
+  
   margin: auto;
   background-color:rgb(0, 0, 0, 0.1);
   color: white;
@@ -77,8 +77,7 @@ module.exports = {
   box-shadow: 0px 2px 8px 2px #555;
   border-radius: 6px;
   box-sizing: border-box;
-  display: flex;
-  flex-wrap: wrap;
+ 
 }
 
 .col h2{
