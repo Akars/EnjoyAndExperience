@@ -72,19 +72,19 @@
 <script>
 module.exports = {
   props: {
-    articles: { type: Array, default: [] },
+    trips: { type: Array, default: [] },
     panier: { type: Object },
     user: {type: Object},
   },
   data () {
     return {
-      newArticle: {
+      newTrip: {
         name: '',
         description: '',
         image: '',
         price: 0
       },
-      editingArticle: {
+      editingTrip: {
         id: -1,
         name: '',
         description: '',

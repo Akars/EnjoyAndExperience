@@ -2,26 +2,38 @@
   <div>
     <h2>Mon Panier</h2>
     <div>
-      <article v-for="article in panier.articles" :key="article.id">
-        <div class="article-img">
+      <article v-for="trip in panier.trips" :key="trip.id">
+        <div class="trip-img">
           <div
             :style="{
               backgroundImage:
-                'url(' + articles.find((a) => a.id === article.id).image + ')',
+                'url(' + trips.find((a) => a.id === trip.id).image + ')',
             }"
           ></div>
         </div>
-        <h1 class = "nameProduct">{{ articles.find(a => a.id === article.id).name }}: {{articles.find(a => a.id === article.id).price}}€</h1>
-        <p class = "descriptionProduct">{{ articles.find(a => a.id === article.id).description }}</p>
+        <div>
+          <h1 class = "Title">{{ trips.find(a => a.id === trip.id).title }}: {{trips.find(a => a.id === trip.id).price}}€</h1>
+          <p class = "descriptionProduct">{{ trips.find(a => a.id === trip.id).description }}</p>
+        
         <div class="inputForm">
-          <p>Qte: </p>
-          <input id="number" type="number" min ="1" value="1" v-model="nbrOfArticle">
-          <button v-on:click="putToPanier(article.id, parseInt(nbrOfArticle))">Change quantity</button>
-          <p class = "price">Total: {{ articles.find(a => a.id === article.id).price * article.quantity }}€</p>
+          <p>Qte: {{trip.quantity}}</p>
+          <div v-if="editingCart.id !== trip.id">
+          <button class = "quantity-button" @click="editCart(trip)" >Change quantity</button>
+          <button @click="removeFromPanier(trip.id)">Remove from cart</button>
+          </div>
+          <div v-else>
+            <p>Quantity : <input type="number" v-model="editingCart.quantity" /></p>
+            <div class="button-action">
+              <button class="validate" @click="abortEditQuantity()">Discard</button>
+              <button class="add-basket" @click="putToPanier(editingCart.id, editingCart.quantity)">Confirm</button>
+            </div>
+          </div>  
+          <p class = "price">Total: {{ trips.find(a => a.id === trip.id).price * trip.quantity}}€</p>
         </div>
+
       </article>
         <div id="validityButton">
-          <button>Validate the card</button>
+          <button @click ="pay()">Check in</button>
         </div>
     </div>
   </div>
@@ -30,47 +42,56 @@
 <script>
 module.exports = {
   props: {
-    articles: { type: Array, default: [] },
+    trips: { type: Array, default: [] },
     panier: { type: Object },
     user: {type: Number},
-    isNotConnected: {type: Boolean},
   },
   data () {
     return {
-      nbrOfArticle: 1,
+      editingCart:{
+        id: -1,
+        quantity: 0,
+      }
     }
   },
   async mounted () {
 
   },
   methods: {
-    putToPanier(articleId, quantity){
-      this.$emit('put-to-panier', articleId, quantity)
+    pay(){
+      this.$emit('pay-panier')
+    },
+    editCart(trip){
+      this.editingCart.id = trip.id
+      this.editingCart.quantity = trip.quantity
+    },
+    putToPanier(tripId, quantity){
+      this.$emit('put-to-panier', tripId, quantity)
+    },
+    removeFromPanier(articleId){
+      this.$emit('remove-from-panier', articleId)
+    },
+    abortEditQuantity(){
+      this.editingCart.id = -1
+      this.editingCart.quantity = 0
     },
   }
 }
 </script>
 
 <style scoped>
-.article-img {
+.trip-img {
   display: center;
   margin-right: auto;
   margin-left: auto;
   margin-top: 5%;
 }
-.article-img div {
+.trip-img div {
   width: 120px;
   height: 120px;
   background-size: cover;
 }
 
-article{
-  border:solid;
-  margin: 20px;
-  padding: 20px;
-  width: 350px;
-  
-}
 
 input {
     display: inline-block;
