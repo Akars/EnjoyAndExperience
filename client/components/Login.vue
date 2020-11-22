@@ -54,7 +54,7 @@ module.exports = {
       },
       logout(){
         this.$emit('logout');
-      },
+      }
   },
 }
 </script>

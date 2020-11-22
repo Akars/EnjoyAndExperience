@@ -75,9 +75,16 @@ var app = new Vue({
     },
 //////////////////////////////////////////////////////////////
     async registerUser(userEmail, userPassword){
-      const data = {email: userEmail, password: userPassword}
-      await axios.post('/api/register', data)
-      console.log("haloç")
+      try{
+        const data = {email: userEmail, password: userPassword}
+        await axios.post('/api/register', data)
+        await axios.post('/api/login', data)
+        await this.getUser()
+        this.$forceUpdate()
+      }
+      catch(e){
+        console.log("Error register")
+      }
     },
 
     async loginUser(userEmail, userPassword){
@@ -96,8 +103,6 @@ var app = new Vue({
       try{
         await axios.post('/api/logout')
         this.user = null
-        console.log("hello")
-        console.log(this.user)
         this.$forceUpdate()
       }
       catch(e){
@@ -109,7 +114,6 @@ var app = new Vue({
       console.log("hello")
       const res = await axios.get('/api/me')
       this.user = res.data
-      console.log(this.user)
     },
 
     async getUser() {

@@ -39,6 +39,24 @@
         </div>
       </div>
 
+      <div v-if="user !== null">
+        <p>
+          <input type="text" v-model="editingTrip.title" /> |
+          <input type="number" v-model="editingTrip.price" />
+        </p>
+        <p>
+          <input type="text" v-model="editingTrip.image" />,
+          <input type="text " v-model="editingTrip.description" />
+        </p>
+        <div class="button-action">
+          <button class="delete" @click="abortEditTrip()">
+            Discards
+          </button>
+          <button class="add-basket" @click="sendEditTrip()">
+            Confirm
+          </button>
+        </div>
+      </div>
     </div>
     
 </template>
