@@ -7,7 +7,7 @@ const { query } = require('express')
 const client = new Client({
  user: 'postgres',
  host: 'localhost',
- password: '0000',
+ password: 'postgresql',
  database: 'EnjoyAndExperience'
 })
 
