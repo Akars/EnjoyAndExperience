@@ -1,24 +1,6 @@
 <template>
   <div>
-    <div class="slider">
-      <ul id="slider-list">
-          <li>
-              <img src="../images/c.jpg" alt=""/>
-          </li>
-          <li>
-              <img src="../images/c.jpg" alt=""/>
-          </li>
-          <li>
-              <img src="../images/c.jpg" alt=""/>
-          </li>
-          <li>
-              <img src="../images/c.jpg" alt=""/>
-          </li>
-          <li>
-              <img src="../images/c.jpg" alt=""/>
-          </li>
-      </ul>
-    </div>
+    
     
     <div class="wrapper">
       <h1>Trips</h1>
