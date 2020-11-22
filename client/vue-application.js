@@ -24,13 +24,14 @@ var app = new Vue({
     panier: {
       createdAt: null,
       updatedAt: null,
-      articles: []
+      trips: []
     },
     user: null,
   },
   async mounted () {
     this.getTrips()
     this.getUser()
+    this.getPanier()
   },
   methods: {
     async getTrips(){
@@ -74,6 +75,7 @@ var app = new Vue({
         await axios.delete('/api/trip/' + tripId)
         const index = this.trips.findIndex(a => a.id === tripId)
         this.trips.splice(index, 1)
+        this.$forceUpdate()
       }
       catch(e){
         alert("Cannot delete the trip")
@@ -132,29 +134,72 @@ var app = new Vue({
     },
 
 //////////////////////////////////////////////////////////////
-    async addToPanier(articleId){
+    async getPanier(){
+      try{
+        const res = await axios.get('/api/panier')
+        this.panier = res.data
+      }
+      catch(e){
+        alert("Error to get the cart")
+      }
+    },
+    async addToPanier(tripId){
       const quantity = 1
-      const id = articleId
+      const id = tripId
 
-      const newArticle = {
+      const newTrip = {
         id: id,
         quantity: quantity
       }
 
-      const res = await axios.post('/api/panier', newArticle)
-      this.panier = res.data
+      try{
+        const res = await axios.post('/api/panier', newTrip)
+        this.panier.trips.push(newTrip)
+        this.panier.updatedAt = new Date()  
+      }
+      catch(e){
+        alert("Error adding in panier")
+      }
     },
 
-    async removeFromPanier(articleId){
-      const res = await axios.delete('/api/panier/' +  articleId)
-      this.panier = res.data
+    async removeFromPanier(tripId){
+      try{
+        await axios.delete('/api/panier/' + tripId)
+        const index = this.panier.trips.findIndex(a => a.id === tripId)
+        this.panier.trips.splice(index, 1)
+        this.panier.updatedAt = new Date()
+        this.$forceUpdate()
+      }
+      catch(e){
+        alert("Error removing the article")
+      }
     },
 
-    async putToPanier(articleId, quantity){
-
-      const res = await axios.put('/api/panier/'+ articleId, {quantity: quantity})
-
-      this.panier = res.data
+    async putToPanier(tripId, quantity){
+      try{
+        const res = await axios.put('/api/panier/'+ tripId, {quantity: quantity})
+        const trip = this.panier.trips.find(a => a.id === tripId)
+        trip.quantity = quantity
+        this.panier.updatedAt = new Date()
+        this.$forceUpdate()
+      }
+      catch(e){
+        alert("Error the quantity is inappropriate")
+      }
     },
+
+    async pay(){
+      try{
+        await axios.post('/api/panier/pay')
+        this.panier.trips.splice(0, this.panier.trips.length)
+        this.panier.updateTrip = new Date()
+        this.panier.createdAt = new Date()
+        alert("Thank you for your purchase !")
+      }
+      catch(e){
+        router.push('/login')
+        alert("You need to connect or create an account first")
+      }
+    }
   }
 })

@@ -1,10 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const articles = require('../data/articles.js')
-
 const bcrypt = require('bcrypt')
 const { Client } = require('pg')
-const { find } = require('../data/articles.js')
+const { query } = require('express')
 
 const client = new Client({
  user: 'postgres',
@@ -133,148 +131,102 @@ router.get('/me', async(req, res) => {
   }
 })
 /***************************************************************** */
+/*********************************PANIER*********************************** */
 
 router.use((req, res, next) => {
-  // l'utilisateur n'est pas reconnu, lui attribuer un panier dans req.session
   if (typeof req.session.panier === 'undefined') {
     req.session.panier = new Panier()
   }
   next()
 })
 
-/*
- * Cette route doit retourner le panier de l'utilisateur, grâce à req.session
- */
-router.get('/panier', (req, res) => {
-  res.json(req.session.panier)
-})
+router.route('/panier')
 
-/*
- * Cette route doit ajouter un article au panier, puis retourner le panier modifié à l'utilisateur
- * Le body doit contenir l'id de l'article, ainsi que la quantité voulue
- */
-router.post('/panier', (req, res) => {
-  const id = parseInt(req.body.id)
-  const quantity = parseInt(req.body.quantity)
+  .get((req, res) =>{
+    res.json(req.session.panier)
+  })
 
-  if ( id < 0 || id > articles.length || isNaN(id) || isNaN(quantity) || quantity <= 0) {
-    res.status(400).json({ message: 'bad request' })
-    return
-  }
+  .post(async (req, res) =>{
+    const id = parseInt(req.body.id)
+    const quantity = parseInt(req.body.quantity)
 
-
-  var idCorrect = 0
-  for(var article of req.session.panier.articles){
-    if(id === article.id){
-      idCorrect = 1
+    if (isNaN(id) || id <= 0 ||
+      isNaN(quantity) || quantity <= 0 ||
+      req.session.panier.trips.some(trip => trip.id === id)) {
+      res.status(400).json({ message: 'bad request' })
+      return
     }
-  }
-  if(idCorrect == 1){
-    res.status(400).json({ message: 'bad request' })
-    return
-  }
 
-  const newArticle = {
-    id: id,
-    quantity: quantity,
-  }
+    const sql = "SELECT * FROM trips WHERE id = $1 LIMIT 1"
+    const result = await client.query({
+      text: sql,
+      values: [id]
+    })
 
-  req.session.panier.articles.push(newArticle)
-  /*
-  for(var article of articles){
-    if(id === article.id){
-      req.session.panier.articles.push(article)
+    if(result.rows.length === 0){
+      res.status(400).json({message: "Couldn't find the trip"})
     }
-  }
-  */
 
-  res.json(req.session.panier)
-})
+    const newTrip = {
+      id,
+      quantity,
+    }
+    
+    req.session.panier.trips.push(newTrip)
+    req.session.panier.updatedAt = new Date()
 
-/*
- * Cette route doit permettre de confirmer un panier, en recevant le nom et prénom de l'utilisateur
- * Le panier est ensuite supprimé grâce à req.session.destroy()
- */
+    res.send()
+  })
+
+
 router.post('/panier/pay', (req, res) => {
-  const firstName = req.body.firstname
-  const surName = req.body.surname
 
-  if(firstName == "" || surName == ""){
-    res.status(400).json({ message: 'bad request' })
+  if (req.session.userId === undefined) {
+    res.status(401).json({ message: 'not logged' })
     return
   }
 
-  const message = "Thank you " + firstName + " " + surName + " for your purchase"
+  const message = "Thank you for your purchase"
 
-  console.log(req.session.panier.articles)
-
-  req.session.destroy()
-  
-  res.send(message)
-  res.json(req.session.panier.articles)
+  req.session.panier.trips.splice(0, req.session.panier.trips.length) 
+  req.session.panier.updatedAt = new Date()
+  req.session.panier.createdAt = new Date()
+  res.send()
 })
 
-/*
- * Cette route doit permettre de changer la quantité d'un article dans le panier
- * Le body doit contenir la quantité voulue
- */
+
 router.put('/panier/:tripId', (req, res) => {
     const tripId = parseInt(req.params.tripId)
     const quantity = parseInt(req.body.quantity)
 
-    console.log("coucou")
     console.log({tripId, quantity})
     if(isNaN(quantity) || quantity <= 0 || tripId <= 0 || isNaN(tripId)){
       res.status(400).json({ message: 'bad request' })
       return
     }
 
-    var idCorrect
-    for(var article of req.session.panier.articles){
-      if(tripId === article.id){
-        idCorrect = 1
-        article.quantity = quantity;
-      }
-    }
-
-    if(idCorrect =! 1){
-      res.status(400).json({ message: 'bad request' })
-      return
-    }
-
-    res.json(req.session.panier)
+    req.session.panier.trips.find(a => a.id === tripId).quantity = quantity
+    req.session.panier.updatedAt = new Date()
+    res.send()
 })
 
-/*
- * Cette route doit supprimer un article dans le panier
- */
 router.delete('/panier/:tripId', (req, res) => {
   const tripId = parseInt(req.params.tripId)
 
-  if(tripId <= 0 || isNaN(tripId)){
-    res.status(400).json({ message: 'bad request' })
+  if (isNaN(tripId)) {
+    res.status(400).json({ message: 'tripId should be a number' })
     return
-  }
-  
-  var idCorrect = 0
-  var index = 0
-  for(var article of req.session.panier.articles){
-    if(tripId === article.id){
-      idCorrect = 1
-      req.session.panier.articles.splice(index, 1) 
-    }
-    index++
   }
 
-  if(idCorrect == 0){
-    res.status(400).json({ message: 'bad request' })
-    return
-  }
-  
-  res.json(req.session.panier)
+  const trip = req.session.panier.trips.find(a => a.id === tripId)
+  const index = req.session.panier.trips.indexOf(trip)
+  req.session.panier.trips.splice(index, 1)
+  req.session.panier.updatedAt = new Date()
+ 
+  res.send()
 })
 
-
+/********************************************************************************************* */
 /*TRIP*/
 
 router.post('/trip', async(req, res) => {
@@ -331,6 +283,7 @@ router.delete('/trip/:tripId', async(req, res) =>{
     res.status(400).json({ message: 'bad request' })
     return
   }
+
 
   const sql = "DELETE FROM trips WHERE id = $1"
   const trips = await client.query({
