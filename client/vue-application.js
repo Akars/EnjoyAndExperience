@@ -50,7 +50,7 @@ var app = new Vue({
         this.$forceUpdate()
       }
       catch(e){
-        console.log("Error adding the trip")
+        alert("Error adding the trip")
       }
     },
 
@@ -65,7 +65,7 @@ var app = new Vue({
         trip.username = newTrip.username
       }
       catch(e){
-        console.log("Cannot update the trip")
+        alert("Cannot update the trip")
       }
     },
 
@@ -76,7 +76,7 @@ var app = new Vue({
         this.trips.splice(index, 1)
       }
       catch(e){
-        console.log("Cannot delete the trip")
+        alert("Cannot delete the trip")
       }
     },
 //////////////////////////////////////////////////////////////
@@ -89,7 +89,7 @@ var app = new Vue({
         this.$forceUpdate()
       }
       catch(e){
-        console.log("Error register")
+        alert("email already taken")
       }
     },
 
@@ -101,7 +101,7 @@ var app = new Vue({
         this.$forceUpdate()
       }
       catch(e){
-        console.log("Error login")
+        alert("email or password incorrect")
       }
     },
 
