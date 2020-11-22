@@ -316,7 +316,7 @@ html{
 }
 
 main{
-    background-color: silver;
+    background-color: white;
     font-family: 'Arbutus Slab';
     display: flex;
     justify-content: center;
@@ -331,6 +331,8 @@ main{
     grid-gap: 5rem;
     grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
     align-items:start;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
 
 }
 
